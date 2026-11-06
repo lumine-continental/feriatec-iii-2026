@@ -1,0 +1,3395 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feria TEC | Instituto Continental — 5 de Diciembre 2026</title>
+  <meta name="description"
+    content="Feria TEC de Instituto Continental (5 de diciembre 2026). 7 zonas interactivas, 12 carreras técnicas y sorteo de una laptop, silla gamer, 2 smartwatch y 12 kits de estudiante.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       FERIA TEC — INSTITUTO CONTINENTAL
+       - Fondo oscuro principal: #1C1C1C (Carbón Mate; #0A0A0A solo para texto)
+       - Ancho máximo: 1250px con amplio respiro vertical (112px por sección)
+       - Hero de bienvenida por capas en bucle (100% pantalla con fondo en modo cover)
+       - Elemento 3D / Spline libre (sin caja contenedora) en secciones de Contador
+       - 12 Carreras en móvil: 1 fila con scroll horizontal y sin descripciones inferiores
+       ========================================================================== */
+
+    .feria-tec-landing {
+      --ft-ink: #0A0A0A;
+      --ft-charcoal: #1C1C1C;
+      --ft-slate: #252525;
+
+      --ft-white: #FFFFFF;
+      --ft-offwhite: #F4F4F4;
+      --ft-soft-white: #EAEAEA;
+      --ft-border-light: #D6D6D6;
+
+      --ft-gray-light: #B8B8B8;
+      --ft-gray-mid: #707070;
+      --ft-gray-dark: #383838;
+
+      --ft-red: #E4000B;
+      --ft-red-hover: #B80009;
+
+      font-family: 'Archivo', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--ft-charcoal);
+      color: var(--ft-white);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-variant-numeric: tabular-nums;
+      caret-color: var(--ft-red);
+      scrollbar-color: var(--ft-gray-mid) var(--ft-charcoal);
+      width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+      position: relative;
+      padding-top: 68px;
+    }
+
+    .feria-tec-landing *,
+    .feria-tec-landing *::before,
+    .feria-tec-landing *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-radius: 0;
+      min-width: 0;
+    }
+
+    .feria-tec-landing ::selection {
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+    }
+
+    .feria-tec-landing :focus-visible {
+      outline: 2px solid var(--ft-red);
+      outline-offset: 2px;
+    }
+
+    .feria-tec-landing img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Contenedor reducido a 1250px */
+    .feria-tec-landing .ft-shell {
+      width: 100%;
+      max-width: 1250px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 24px;
+      padding-right: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ==========================================================================
+       ANIMACIONES Y UTILIDADES SVG
+       ========================================================================== */
+    @keyframes ftFloatSlow {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-10px) rotate(2deg);
+      }
+    }
+
+    @keyframes ftPulseCta {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.04);
+      }
+    }
+
+    .feria-tec-landing .ft-floating-shape {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      animation: ftFloatSlow 6s ease-in-out infinite;
+      opacity: 0.35;
+    }
+
+    .feria-tec-landing .ft-icon-svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+      fill: none;
+      flex-shrink: 0;
+    }
+
+    /* Botones con sombra tipo cómic a dos lados */
+    .feria-tec-landing .ft-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border: 2px solid var(--ft-charcoal);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .feria-tec-landing .ft-btn-red {
+      background-color: var(--ft-red);
+      color: var(--ft-white);
+      border-color: var(--ft-charcoal);
+      box-shadow: 5px 5px 0px var(--ft-charcoal);
+    }
+
+    .feria-tec-landing .ft-btn-red:hover {
+      background-color: var(--ft-charcoal);
+      color: var(--ft-white);
+      transform: translate(-2px, -2px);
+    }
+
+    .feria-tec-landing .ft-btn-dark {
+      background-color: var(--ft-charcoal);
+      color: var(--ft-white);
+      border-color: var(--ft-charcoal);
+      box-shadow: 5px 5px 0px var(--ft-gray-mid);
+    }
+
+    .feria-tec-landing .ft-btn-dark:hover {
+      background-color: var(--ft-red);
+      border-color: var(--ft-red);
+      color: var(--ft-white);
+      transform: translate(-2px, -2px);
+    }
+
+    /* ==========================================================================
+       HEADER FIJO CON BOTÓN CTA EN ANIMACIÓN PULSE (SIN BORDES BLANCOS SOBRANTES)
+       ========================================================================== */
+    .feria-tec-landing .ft-header {
+      background-color: var(--ft-charcoal);
+      border-bottom: 1px solid var(--ft-gray-dark);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 150;
+    }
+
+    .feria-tec-landing .ft-header-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 68px;
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 8px 24px;
+      gap: 16px;
+    }
+
+    .feria-tec-landing .ft-brand-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ft-white);
+    }
+
+    .feria-tec-landing .ft-brand-logo {
+      width: 120px;
+      max-width: 120px;
+      height: auto;
+      max-height: 29px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .feria-tec-landing .ft-nav-links {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    @media (min-width: 1024px) {
+      .feria-tec-landing .ft-nav-links {
+        display: flex;
+      }
+    }
+
+    .feria-tec-landing .ft-nav-links a {
+      color: var(--ft-soft-white);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border: 1px solid transparent;
+      transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .feria-tec-landing .ft-nav-links a:hover {
+      color: var(--ft-white);
+      border-color: var(--ft-gray-mid);
+      background-color: var(--ft-slate);
+    }
+
+    .feria-tec-landing .ft-header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--ft-red);
+      color: var(--ft-white);
+      padding: 10px 18px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border: 2px solid var(--ft-white);
+      animation: ftPulseCta 2.2s infinite ease-in-out;
+    }
+
+    .feria-tec-landing .ft-header-cta:hover {
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      animation-play-state: paused;
+    }
+
+    /* ==========================================================================
+       0. HERO ESTÉTICO DE BIENVENIDA (100% PANTALLA — COMPOSICIÓN POR CAPAS EN BUCLE)
+       ========================================================================== */
+    .feria-tec-landing .ft-retrotv-section {
+      background-color: var(--ft-charcoal);
+      width: 100%;
+      max-width: none;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Escenario 100% de la pantalla en cualquier dispositivo (ignora los 1250px) */
+    .feria-tec-landing .ft-kv-stage {
+      position: relative;
+      width: 100%;
+      min-height: clamp(520px, 54vw, 860px);
+      height: calc(100vh - 68px);
+      max-height: 920px;
+      overflow: hidden;
+      background-color: var(--ft-charcoal);
+    }
+
+    /* CAPA 0 (ESTÁTICA): Fondo sin edificio (se estira con object-fit: cover para cubrir cualquier pantalla) */
+    .feria-tec-landing .ft-kv-bg-static {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      filter: grayscale(5%) contrast(1.00) brightness(0.85);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Viñeta arquitectónica y tramado sutil sobre el fondo estático para fusionar con #1C1C1C */
+    .feria-tec-landing .ft-kv-bg-vignette {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(28, 28, 28, 0.72) 0%, rgba(28, 28, 28, 0.12) 38%, rgba(28, 28, 28, 0.25) 75%, rgba(28, 28, 28, 0.92) 100%);
+      pointer-events: none;
+      opacity: 65%;
+    }
+
+    /* Lienzo interno de composición por capas (anclado a la base para mantener proporciones exactas) */
+    .feria-tec-landing .ft-kv-composition {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 1680px;
+      height: clamp(500px, 52vw, 760px);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .feria-tec-landing .ft-kv-layer {
+      position: absolute;
+      display: block;
+      height: auto;
+      user-select: none;
+      will-change: transform;
+      filter: drop-shadow(8px 10px 0px rgba(28, 28, 28, 0.85));
+    }
+
+    /* CAPA 1: Recurso 2.png — Señal "TALLERES" (Izquierda Superior) */
+    .feria-tec-landing .ft-kv-sign-talleres {
+      left: 19%;
+      bottom: 15%;
+      width: clamp(145px, 17vw, 270px);
+      z-index: 2;
+      transform-origin: bottom center;
+      animation: ftLoopSignTalleres 3.8s ease-in-out infinite;
+    }
+
+    /* CAPA 2: Recurso 1.png — Señal "ZONA DE BREAK" (Izquierda Inferior) */
+    .feria-tec-landing .ft-kv-sign-break {
+      left: 14%;
+      bottom: -2%;
+      width: clamp(140px, 16.5vw, 260px);
+      z-index: 3;
+      transform-origin: bottom center;
+      animation: ftLoopSignBreak 4.5s ease-in-out infinite -1.2s;
+    }
+
+    /* CAPA 3: Recurso 3.png — Señal "SORTEOS" (Derecha Superior) */
+    .feria-tec-landing .ft-kv-sign-sorteos {
+      right: 19%;
+      bottom: 14%;
+      width: clamp(135px, 16vw, 250px);
+      z-index: 2;
+      transform-origin: bottom center;
+      animation: ftLoopSignSorteos 4.1s ease-in-out infinite -0.7s;
+    }
+
+    /* CAPA 4: Recurso 4.png — Señal "ZONA TECNOLÓGICA" (Derecha Inferior) */
+    .feria-tec-landing .ft-kv-sign-tec {
+      right: 14%;
+      bottom: -1%;
+      width: clamp(140px, 16.5vw, 260px);
+      z-index: 3;
+      transform-origin: bottom center;
+      animation: ftLoopSignTec 4.7s ease-in-out infinite -2.1s;
+    }
+
+    /* CAPA 5: Recurso 7.png — Estudiantes con cartel "¡Feria TEC! Conoce tu vocación técnica" */
+    .feria-tec-landing .ft-kv-students {
+      left: 50%;
+      bottom: 0%;
+      width: clamp(320px, 45vw, 700px);
+      z-index: 4;
+      transform-origin: bottom center;
+      animation: ftLoopStudents 4.2s ease-in-out infinite;
+    }
+
+    /* CAPA 6: Recurso 5.png — Fachada Brutalista de Cemento y Vidrio (Primer Plano) */
+    .feria-tec-landing .ft-kv-building {
+      left: 50%;
+      bottom: -14px;
+      width: clamp(360px, 63vw, 1000px);
+      z-index: 6;
+      transform-origin: bottom center;
+      animation: ftLoopBuilding 5.4s ease-in-out infinite -1.4s;
+    }
+
+    /* CAPAS 7 y 8: Placas urbanas flotantes en bucle (alineadas al KV y a la línea gráfica brutalista) */
+    .feria-tec-landing .ft-kv-badge-left {
+      position: absolute;
+      left: 4%;
+      top: 18%;
+      z-index: 7;
+      background-color: var(--ft-red);
+      color: var(--ft-white);
+      border: 3px solid var(--ft-ink);
+      box-shadow: 6px 6px 0px var(--ft-ink);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.05rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      animation: ftLoopBadgeLeft 4.4s ease-in-out infinite -0.6s;
+    }
+
+    .feria-tec-landing .ft-kv-badge-right {
+      position: absolute;
+      right: 4%;
+      top: 18%;
+      z-index: 7;
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      border: 3px solid var(--ft-ink);
+      box-shadow: 6px 6px 0px var(--ft-ink);
+      padding: 12px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.85rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      animation: ftLoopBadgeRight 4.9s ease-in-out infinite -1.9s;
+    }
+
+    .feria-tec-landing .ft-kv-badge-right strong {
+      background-color: var(--ft-red);
+      color: var(--ft-white);
+      padding: 3px 8px;
+      font-size: 0.95rem;
+      display: inline-block;
+    }
+
+    .feria-tec-landing .ft-kv-location-bar {
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      z-index: 8;
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      border: 3px solid var(--ft-ink);
+      box-shadow: 6px 6px 0px var(--ft-ink);
+      padding: 10px 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.85rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      animation: ftLoopLocationBar 4.6s ease-in-out infinite -1.1s;
+    }
+
+    .feria-tec-landing .ft-kv-location-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .feria-tec-landing .ft-kv-location-sep {
+      width: 2px;
+      height: 16px;
+      background-color: var(--ft-ink);
+    }
+
+    /* Keyframes de movimiento continuo en bucle (ilusión de video motion-graphics) */
+    @keyframes ftLoopSignTalleres {
+
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0) rotate(-3.5deg);
+      }
+
+      50% {
+        transform: translate3d(4px, -12px, 0) rotate(3deg);
+      }
+    }
+
+    @keyframes ftLoopSignBreak {
+
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0) rotate(3deg);
+      }
+
+      50% {
+        transform: translate3d(-5px, -10px, 0) rotate(-4deg);
+      }
+    }
+
+    @keyframes ftLoopSignSorteos {
+
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0) rotate(3.5deg);
+      }
+
+      50% {
+        transform: translate3d(-4px, -13px, 0) rotate(-3deg);
+      }
+    }
+
+    @keyframes ftLoopSignTec {
+
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0) rotate(-3deg);
+      }
+
+      50% {
+        transform: translate3d(5px, -9px, 0) rotate(4deg);
+      }
+    }
+
+    @keyframes ftLoopStudents {
+
+      0%,
+      100% {
+        transform: translate3d(-50%, 0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate3d(-50%, -14px, 0) scale(1.025);
+      }
+    }
+
+    @keyframes ftLoopBuilding {
+
+      0%,
+      100% {
+        transform: translate3d(-50%, 0, 0);
+      }
+
+      50% {
+        transform: translate3d(-50%, -7px, 0);
+      }
+    }
+
+    @keyframes ftLoopBadgeLeft {
+
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+
+      50% {
+        transform: translate3d(0, -10px, 0);
+      }
+    }
+
+    @keyframes ftLoopBadgeRight {
+
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+
+      50% {
+        transform: translate3d(0, -11px, 0);
+      }
+    }
+
+    @keyframes ftLoopLocationBar {
+
+      0%,
+      100% {
+        transform: translate3d(-50%, 0, 0);
+      }
+
+      50% {
+        transform: translate3d(-50%, -5px, 0);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .feria-tec-landing .ft-kv-stage {
+        min-height: 450px;
+        height: 450px;
+        max-height: 520px;
+      }
+
+      .feria-tec-landing .ft-kv-composition {
+        height: 450px;
+      }
+
+      .feria-tec-landing .ft-kv-students {
+        width: 80vw;
+        bottom: 15%;
+      }
+
+      .feria-tec-landing .ft-kv-building {
+        width: 96vw;
+        bottom: -8px;
+      }
+
+      .feria-tec-landing .ft-kv-sign-talleres {
+        left: 1%;
+        bottom: 26%;
+        width: 29vw;
+      }
+
+      .feria-tec-landing .ft-kv-sign-break {
+        left: -2%;
+        bottom: 10%;
+        width: 28vw;
+      }
+
+      .feria-tec-landing .ft-kv-sign-sorteos {
+        right: 1%;
+        bottom: 26%;
+        width: 28vw;
+      }
+
+      .feria-tec-landing .ft-kv-sign-tec {
+        right: -2%;
+        bottom: 10%;
+        width: 28vw;
+      }
+
+      .feria-tec-landing .ft-kv-badge-left {
+        left: 12px;
+        top: 14px;
+        padding: 8px 10px;
+        font-size: 0.75rem;
+        gap: 6px;
+      }
+
+      .feria-tec-landing .ft-kv-badge-right {
+        right: 12px;
+        top: 14px;
+        padding: 8px 10px;
+        font-size: 0.75rem;
+      }
+
+      .feria-tec-landing .ft-kv-badge-right strong {
+        font-size: 0.75rem;
+        padding: 2px 6px;
+      }
+
+      .feria-tec-landing .ft-kv-location-bar {
+        bottom: 12px;
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        gap: 8px;
+        max-width: calc(100% - 24px);
+        white-space: normal;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+    /* ==========================================================================
+       1. LAUNCHER TÁCTICO + VIDEO CUADRADO + FORMULARIO GRAVITY FORMS
+       ========================================================================== */
+    .feria-tec-landing .ft-hero {
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      padding: 112px 0;
+      position: relative;
+      border-top: 4px solid var(--ft-ink);
+    }
+
+    .feria-tec-landing .ft-hero-launcher {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    @media (min-width: 1100px) {
+      .feria-tec-landing .ft-hero-launcher {
+        grid-template-columns: 200px 1fr 390px;
+      }
+    }
+
+    /* Columna Izquierda: Selector Táctico de 7 Zonas */
+    .feria-tec-landing .ft-launcher-rail {
+      background-color: var(--ft-offwhite);
+      border: 2px solid var(--ft-ink);
+      box-shadow: 6px 6px 0px var(--ft-ink);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .feria-tec-landing .ft-rail-head {
+      padding: 9px 11px;
+      background-color: var(--ft-ink);
+      color: var(--ft-white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+    }
+
+    .feria-tec-landing .ft-rail-head .ft-icon-svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .feria-tec-landing .ft-rail-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      list-style: none;
+      margin-top: 8px;
+    }
+
+    .feria-tec-landing .ft-rail-btn {
+      width: 100%;
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      border: 2px solid var(--ft-ink);
+      padding: 9px 11px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      font-family: inherit;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.2;
+      cursor: pointer;
+      transition: transform 0.12s ease, background-color 0.12s ease, color 0.12s ease;
+    }
+
+    .feria-tec-landing .ft-rail-btn:hover,
+    .feria-tec-landing .ft-rail-btn.is-active {
+      background-color: var(--ft-ink);
+      color: var(--ft-white);
+    }
+
+    .feria-tec-landing .ft-rail-btn-code {
+      padding: 2px 6px;
+      background-color: var(--ft-ink);
+      color: var(--ft-white);
+      font-weight: 900;
+      font-size: 0.68rem;
+      line-height: 1.1;
+    }
+
+    .feria-tec-landing .ft-rail-btn:hover .ft-rail-btn-code,
+    .feria-tec-landing .ft-rail-btn.is-active .ft-rail-btn-code {
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+    }
+
+    .feria-tec-landing .ft-rail-preview {
+      border: 2px solid var(--ft-ink);
+      background-color: var(--ft-white);
+      padding: 11px;
+    }
+
+    .feria-tec-landing .ft-rail-preview-title {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .feria-tec-landing .ft-rail-preview-desc {
+      font-size: 0.72rem;
+      color: var(--ft-gray-mid);
+      line-height: 1.4;
+    }
+
+    /* Columna Central: Escenario Fotográfico + Bonus Drop */
+    .feria-tec-landing .ft-hero-stage {
+      background-color: var(--ft-ink);
+      color: var(--ft-white);
+      border: 2px solid var(--ft-ink);
+      box-shadow: 6px 6px 0px var(--ft-ink);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feria-tec-landing .ft-hero-title {
+      font-size: clamp(2.25rem, 4.2vw, 3.5rem);
+      font-weight: 900;
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--ft-white);
+      margin-bottom: 14px;
+    }
+
+    .feria-tec-landing .ft-hero-title-invert {
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      padding: 0 10px;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    .feria-tec-landing .ft-hero-badges-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .feria-tec-landing .ft-hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 10px;
+      border: 1px solid var(--ft-gray-mid);
+      background-color: var(--ft-charcoal);
+      color: var(--ft-white);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .feria-tec-landing .ft-hero-photo-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    @media (min-width: 720px) {
+      .feria-tec-landing .ft-hero-photo-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* Caja cuadrada (1:1) de vista previa de video (abre modal con fondo desenfocado al hacer clic) */
+    .feria-tec-landing .ft-hero-photo-frame {
+      border: 2px solid var(--ft-white);
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background-color: var(--ft-slate);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feria-tec-landing .ft-hero-photo-frame img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .feria-tec-landing .ft-hero-photo-frame:hover img {
+      transform: scale(1.04);
+      opacity: 0.95;
+    }
+
+    .feria-tec-landing .ft-video-square-play {
+      position: relative;
+      z-index: 2;
+      width: 68px;
+      height: 68px;
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      border: 3px solid var(--ft-ink);
+      box-shadow: 6px 6px 0px var(--ft-ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .feria-tec-landing .ft-hero-photo-frame:hover .ft-video-square-play {
+      background-color: var(--ft-red);
+      color: var(--ft-white);
+      transform: translate(-2px, -2px);
+    }
+
+    .feria-tec-landing .ft-video-square-tag {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      z-index: 2;
+      background-color: var(--ft-ink);
+      color: var(--ft-white);
+      border: 2px solid var(--ft-white);
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .feria-tec-landing .ft-video-modal-player {
+      width: 100%;
+      max-height: 72vh;
+      display: block;
+      background-color: var(--ft-ink);
+      border: 2px solid var(--ft-ink);
+    }
+
+    .feria-tec-landing .ft-hero-prize-callout {
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      border: 2px solid var(--ft-white);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .feria-tec-landing .ft-bonus-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      border: 2px solid var(--ft-ink);
+      box-shadow: 4px 4px 0px var(--ft-ink);
+      align-self: flex-start;
+      white-space: nowrap;
+    }
+
+    .feria-tec-landing .ft-hero-prize-callout strong {
+      font-size: 0.85rem;
+      font-weight: 800;
+      line-height: 1.45;
+      display: block;
+    }
+
+    /* Columna Derecha: Contenedor para Shortcode de WordPress Gravity Forms */
+    .feria-tec-landing .ft-hero-form-dock {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feria-tec-landing .ft-form-card {
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      border: 2px solid var(--ft-charcoal);
+      box-shadow: 6px 6px 0px var(--ft-charcoal);
+      padding: 32px 28px;
+      width: 100%;
+    }
+
+    .feria-tec-landing .ft-form-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feria-tec-landing .ft-form-desc {
+      font-size: 0.78rem;
+      color: var(--ft-gray-dark);
+      margin-bottom: 20px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .feria-tec-landing .ft-gf-shortcode-slot {
+      width: 100%;
+      height: auto;
+      overflow: visible;
+      font-size: inherit;
+      line-height: normal;
+      color: inherit;
+    }
+
+    .feria-tec-landing .ft-gf-shortcode-slot .gform_wrapper {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--ft-ink);
+      height: auto;
+      overflow: visible;
+    }
+
+    .feria-tec-landing .gform_wrapper form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .feria-tec-landing .gform_wrapper .gfield_label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--ft-ink);
+    }
+
+    .feria-tec-landing .gform_wrapper input[type="text"],
+    .feria-tec-landing .gform_wrapper input[type="email"],
+    .feria-tec-landing .gform_wrapper input[type="tel"],
+    .feria-tec-landing .gform_wrapper select {
+      width: 100%;
+      height: 42px;
+      padding: 0 12px;
+      background-color: var(--ft-offwhite);
+      border: 1px solid var(--ft-charcoal);
+      color: var(--ft-ink);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .feria-tec-landing .gform_wrapper .gform_button {
+      width: 100%;
+      height: 48px;
+      background-color: var(--ft-red);
+      color: var(--ft-white);
+      border: 2px solid var(--ft-charcoal);
+      box-shadow: 5px 5px 0px var(--ft-charcoal);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+
+    /* ==========================================================================
+       SECCIÓN CONTADOR (5 DE DICIEMBRE 2026) CON VIDEO DE FONDO + ELEMENTO 3D LIBRE
+       ========================================================================== */
+    .feria-tec-landing .ft-countdown-section {
+      background-color: var(--ft-charcoal);
+      color: var(--ft-white);
+      padding: 96px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feria-tec-landing .ft-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .feria-tec-landing .ft-bg-video-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(28, 28, 28, 0.78);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .feria-tec-landing .ft-countdown-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (min-width: 992px) {
+      .feria-tec-landing .ft-countdown-wrap {
+        grid-template-columns: 0.75fr 1fr 0.45fr;
+      }
+    }
+
+    .feria-tec-landing .ft-countdown-title {
+      font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      line-height: 0.98;
+    }
+
+    .feria-tec-landing .ft-countdown-boxes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (min-width: 640px) {
+      .feria-tec-landing .ft-countdown-boxes {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .feria-tec-landing .ft-cd-unit {
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      border: 2px solid var(--ft-ink);
+      box-shadow: 6px 6px 0px var(--ft-ink);
+      padding: 22px 14px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .feria-tec-landing .ft-cd-num {
+      font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+      font-weight: 900;
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+    }
+
+    .feria-tec-landing .ft-cd-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--ft-gray-dark);
+    }
+
+    /* Elemento 3D / Spline flotando libremente SIN cuadro contenedor */
+    .feria-tec-landing .ft-spline-free {
+      width: 100%;
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    .feria-tec-landing .ft-spline-free iframe,
+    .feria-tec-landing .ft-spline-free spline-viewer {
+      width: 100%;
+      height: 180px;
+      border: none;
+      background: transparent;
+    }
+
+    .feria-tec-landing .ft-3d-cube-svg {
+      width: 156px;
+      height: 156px;
+      animation: ftFloatSlow 4.5s ease-in-out infinite;
+    }
+
+    /* ==========================================================================
+       2. DESCUBRE LAS 7 ZONAS (AMPLIO PADDING + TIPOGRAFÍA COMPACTA)
+       ========================================================================== */
+    .feria-tec-landing .ft-zones-section {
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      padding: 112px 0;
+      position: relative;
+    }
+
+    .feria-tec-landing .ft-section-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .feria-tec-landing .ft-section-title-light {
+      font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+      font-weight: 900;
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--ft-ink);
+    }
+
+    .feria-tec-landing .ft-section-title-light span {
+      background-color: var(--ft-charcoal);
+      color: var(--ft-white);
+      padding: 0 10px;
+      display: inline-block;
+    }
+
+    .feria-tec-landing .ft-section-title-dark {
+      font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+      font-weight: 900;
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--ft-white);
+    }
+
+    .feria-tec-landing .ft-section-title-dark span {
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      padding: 0 10px;
+      display: inline-block;
+    }
+
+    .feria-tec-landing .ft-zones-matrix {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    @media (min-width: 992px) {
+      .feria-tec-landing .ft-zones-matrix {
+        grid-template-columns: repeat(12, 1fr);
+      }
+
+      .feria-tec-landing .ft-zone-span-7 {
+        grid-column: span 7;
+      }
+
+      .feria-tec-landing .ft-zone-span-5 {
+        grid-column: span 5;
+      }
+
+      .feria-tec-landing .ft-zone-span-4 {
+        grid-column: span 4;
+      }
+
+      .feria-tec-landing .ft-zone-span-8 {
+        grid-column: span 8;
+      }
+    }
+
+    .feria-tec-landing .ft-zone-block {
+      border: 2px solid var(--ft-charcoal);
+      box-shadow: 6px 6px 0px var(--ft-charcoal);
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .feria-tec-landing .ft-zone-block:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 8px 8px 0px var(--ft-charcoal);
+    }
+
+    .feria-tec-landing .ft-zone-block.is-dark-block {
+      background-color: var(--ft-charcoal);
+      color: var(--ft-white);
+    }
+
+    .feria-tec-landing .ft-zone-media {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+      background-color: var(--ft-slate);
+    }
+
+    .feria-tec-landing .ft-zone-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .feria-tec-landing .ft-zone-block:hover .ft-zone-media img {
+      transform: scale(1.04);
+    }
+
+    .feria-tec-landing .ft-zone-num-badge {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: var(--ft-charcoal);
+      color: var(--ft-white);
+      padding: 6px 14px;
+      font-size: 0.85rem;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .feria-tec-landing .ft-zone-body {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 1;
+    }
+
+    .feria-tec-landing .ft-zone-heading {
+      font-size: 1.25rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .feria-tec-landing .ft-zone-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .feria-tec-landing .ft-zone-tags li {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      background-color: var(--ft-offwhite);
+      color: var(--ft-ink);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .feria-tec-landing .ft-zone-block.is-dark-block .ft-zone-tags li {
+      background-color: var(--ft-slate);
+      color: var(--ft-white);
+    }
+
+    .feria-tec-landing .ft-zone-promo-box {
+      padding: 16px 18px;
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .feria-tec-landing .ft-zone-promo-text {
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
+    .feria-tec-landing .ft-partner-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .feria-tec-landing .ft-partner-cell {
+      padding: 10px 8px;
+      border: 1px solid var(--ft-charcoal);
+      background-color: var(--ft-offwhite);
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--ft-ink);
+    }
+
+    .feria-tec-landing .ft-partner-cell:last-child {
+      background-color: var(--ft-charcoal);
+      color: var(--ft-white);
+    }
+
+    /* ==========================================================================
+       3. 11 CARRERAS (SIN BORDES BLANCOS, SIN SUBTÍTULOS Y SCROLL LATERAL EN MÓVIL)
+       ========================================================================== */
+    .feria-tec-landing .ft-careers-section {
+      background-color: var(--ft-charcoal);
+      color: var(--ft-white);
+      padding: 112px 0;
+      position: relative;
+    }
+
+    .feria-tec-landing .ft-career-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .feria-tec-landing .ft-filter-btn {
+      background-color: var(--ft-slate);
+      color: var(--ft-soft-white);
+      border: none;
+      padding: 10px 16px;
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .feria-tec-landing .ft-filter-btn:hover,
+    .feria-tec-landing .ft-filter-btn.is-active {
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+    }
+
+    /* En móvil: 1 sola fila con scroll horizontal para no ocupar espacio vertical */
+    .feria-tec-landing .ft-careers-grid {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 16px;
+      padding-bottom: 12px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .feria-tec-landing .ft-career-card {
+      flex: 0 0 265px;
+      scroll-snap-align: start;
+      background-color: var(--ft-slate);
+      box-shadow: 5px 5px 0px var(--ft-ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.18s ease;
+    }
+
+    @media (min-width: 768px) {
+      .feria-tec-landing .ft-careers-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        overflow-x: visible;
+        padding-bottom: 0;
+        gap: 20px;
+      }
+
+      .feria-tec-landing .ft-career-card {
+        flex: initial;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .feria-tec-landing .ft-careers-grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-flow: dense;
+      }
+
+      .feria-tec-landing .ft-career-card.is-wide {
+        grid-column: span 2;
+      }
+    }
+
+    .feria-tec-landing .ft-career-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .feria-tec-landing .ft-career-card[hidden] {
+      display: none !important;
+    }
+
+    .feria-tec-landing .ft-career-thumb {
+      position: relative;
+      height: 185px;
+      overflow: hidden;
+      background-color: var(--ft-charcoal);
+    }
+
+    .feria-tec-landing .ft-career-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .feria-tec-landing .ft-career-card:hover .ft-career-thumb img {
+      transform: scale(1.04);
+    }
+
+    .feria-tec-landing .ft-career-index {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      padding: 5px 10px;
+      font-size: 0.85rem;
+      font-weight: 900;
+    }
+
+    .feria-tec-landing .ft-career-content {
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      flex: 1;
+    }
+
+    .feria-tec-landing .ft-career-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: var(--ft-white);
+    }
+
+    /* ==========================================================================
+       4. SORTEO EXCLUSIVO (4 PREMIOS CON PLACEHOLDERS + MODAL DE TÉRMINOS Y CONDICIONES)
+       ========================================================================== */
+    .feria-tec-landing .ft-giveaway-section {
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      padding: 112px 0;
+      position: relative;
+    }
+
+    .feria-tec-landing .ft-giveaway-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 640px) {
+      .feria-tec-landing .ft-giveaway-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .feria-tec-landing .ft-giveaway-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .feria-tec-landing .ft-prize-monolith {
+      border: 2px solid var(--ft-charcoal);
+      box-shadow: 6px 6px 0px var(--ft-charcoal);
+      background-color: var(--ft-charcoal);
+      color: var(--ft-white);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .feria-tec-landing .ft-prize-monolith.is-white-card {
+      background-color: var(--ft-offwhite);
+      color: var(--ft-ink);
+    }
+
+    .feria-tec-landing .ft-prize-visual {
+      position: relative;
+      height: 220px;
+      background-color: var(--ft-slate);
+      overflow: hidden;
+      border-bottom: 2px solid var(--ft-charcoal);
+    }
+
+    .feria-tec-landing .ft-prize-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .feria-tec-landing .ft-prize-num {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      border: 2px solid var(--ft-charcoal);
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .feria-tec-landing .ft-prize-body {
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .feria-tec-landing .ft-prize-title {
+      font-size: 1.25rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .feria-tec-landing .ft-prize-sub {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ft-soft-white);
+      line-height: 1.4;
+    }
+
+    .feria-tec-landing .ft-prize-monolith.is-white-card .ft-prize-sub {
+      color: var(--ft-gray-dark);
+    }
+
+    .feria-tec-landing .ft-giveaway-rule-bar {
+      margin-top: 28px;
+      background-color: var(--ft-offwhite);
+      color: var(--ft-ink);
+      border: 2px solid var(--ft-charcoal);
+      box-shadow: 6px 6px 0px var(--ft-charcoal);
+      padding: 22px 26px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .feria-tec-landing .ft-giveaway-rule-text {
+      font-size: 0.95rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feria-tec-landing .ft-giveaway-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Modal de Términos y Condiciones con desenfoque de fondo */
+    .feria-tec-landing .ft-tyc-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 250;
+      background-color: rgba(28, 28, 28, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .feria-tec-landing .ft-tyc-modal.is-open {
+      display: flex;
+    }
+
+    .feria-tec-landing .ft-tyc-dialog {
+      width: 100%;
+      max-width: 620px;
+      max-height: 85vh;
+      overflow-y: auto;
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      border: 3px solid var(--ft-charcoal);
+      box-shadow: 10px 10px 0px var(--ft-charcoal);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .feria-tec-landing .ft-tyc-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--ft-charcoal);
+    }
+
+    .feria-tec-landing .ft-tyc-title {
+      font-size: 1.25rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .feria-tec-landing .ft-tyc-close {
+      width: 34px;
+      height: 34px;
+      background-color: var(--ft-charcoal);
+      color: var(--ft-white);
+      border: none;
+      font-size: 1.05rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feria-tec-landing .ft-tyc-close:hover {
+      background-color: var(--ft-red);
+    }
+
+    .feria-tec-landing .ft-tyc-body {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: var(--ft-gray-dark);
+    }
+
+    .feria-tec-landing .ft-tyc-subtitle {
+      font-size: 0.95rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--ft-ink);
+      margin-top: 4px;
+    }
+
+    .feria-tec-landing .ft-tyc-list {
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* ==========================================================================
+       6. ESTADÍSTICAS INSTITUCIONALES (AMPLIO PADDING + COMPACTACIÓN)
+       ========================================================================== */
+    .feria-tec-landing .ft-stats-section {
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+      padding: 112px 0;
+    }
+
+    .feria-tec-landing .ft-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @media (min-width: 1024px) {
+      .feria-tec-landing .ft-stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .feria-tec-landing .ft-stat-cell {
+      background-color: var(--ft-offwhite);
+      border: 2px solid var(--ft-charcoal);
+      box-shadow: 6px 6px 0px var(--ft-charcoal);
+      color: var(--ft-ink);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .feria-tec-landing .ft-stat-cell.is-inverted {
+      background-color: var(--ft-charcoal);
+      color: var(--ft-white);
+    }
+
+    .feria-tec-landing .ft-stat-figure {
+      font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+      font-weight: 900;
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .feria-tec-landing .ft-stat-caption {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-top: 1px solid var(--ft-border-light);
+      padding-top: 10px;
+    }
+
+    .feria-tec-landing .ft-stat-cell.is-inverted .ft-stat-caption {
+      border-top-color: var(--ft-gray-dark);
+    }
+
+    /* ==========================================================================
+       7. PREGUNTAS FRECUENTES (TRAMADO GRIS PUNTEADO ARQUITECTÓNICO BRUTALISTA)
+       ========================================================================== */
+    .feria-tec-landing .ft-faq-section {
+      background-color: var(--ft-charcoal);
+      background-image:
+        radial-gradient(rgba(255, 255, 255, 0.16) 1.25px, transparent 1.25px),
+        radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 10px 10px, 10px 10px;
+      background-position: 0 0, 5px 5px;
+      border-top: 4px solid var(--ft-ink);
+      color: var(--ft-white);
+      padding: 112px 0;
+    }
+
+    .feria-tec-landing .ft-faq-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 900px) {
+      .feria-tec-landing .ft-faq-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .feria-tec-landing .ft-faq-item {
+      background-color: var(--ft-slate);
+      border: 2px solid var(--ft-ink);
+      box-shadow: 5px 5px 0px var(--ft-ink);
+    }
+
+    .feria-tec-landing .ft-faq-item.is-open {
+      background-color: var(--ft-white);
+      color: var(--ft-ink);
+    }
+
+    .feria-tec-landing .ft-faq-trigger {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      color: inherit;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .feria-tec-landing .ft-faq-square {
+      width: 28px;
+      height: 28px;
+      background-color: var(--ft-charcoal);
+      color: var(--ft-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .feria-tec-landing .ft-faq-panel {
+      display: none;
+      padding: 0 24px 22px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .feria-tec-landing .ft-faq-item.is-open .ft-faq-panel {
+      display: block;
+    }
+
+    /* ==========================================================================
+       8. FOOTER INSTITUCIONAL MÍNIMO
+       ========================================================================== */
+    .feria-tec-landing .ft-footer {
+      background-color: var(--ft-charcoal);
+      color: var(--ft-white);
+      padding: 40px 0;
+      border-top: 1px solid var(--ft-gray-dark);
+    }
+
+    .feria-tec-landing .ft-footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .feria-tec-landing .ft-footer-copy {
+      font-size: 0.78rem;
+      color: var(--ft-gray-light);
+      font-weight: 600;
+    }
+
+    .feria-tec-landing .ft-copyright-link {
+      color: inherit;
+      text-decoration: none;
+      cursor: default;
+    }
+
+    .feria-tec-landing .ft-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .feria-tec-landing .ft-footer-links a {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--ft-soft-white);
+      text-decoration: none;
+    }
+
+    /* ==========================================================================
+       AJUSTES RESPONSIVOS MÓVILES (< 640px)
+       ========================================================================== */
+    @media (max-width: 639px) {
+      .feria-tec-landing .ft-shell {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .feria-tec-landing .ft-header-grid {
+        gap: 8px;
+        padding: 8px 16px;
+      }
+
+      .feria-tec-landing .ft-header-cta {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        white-space: nowrap;
+      }
+
+      .feria-tec-landing .ft-hero-launcher {
+        padding: 0 16px;
+      }
+
+      .feria-tec-landing .ft-hero-stage,
+      .feria-tec-landing .ft-form-card {
+        padding: 20px 16px;
+      }
+
+      .feria-tec-landing .ft-stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feria-tec-landing .ft-partner-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feria-tec-landing .ft-hero,
+      .feria-tec-landing .ft-zones-section,
+      .feria-tec-landing .ft-careers-section,
+      .feria-tec-landing .ft-giveaway-section,
+      .feria-tec-landing .ft-stats-section,
+      .feria-tec-landing .ft-faq-section {
+        padding: 72px 0;
+      }
+    }
+  </style>
+</head>
+
+<body style="margin: 0; padding: 0; background-color: #1C1C1C;">
+
+  <div class="feria-tec-landing" id="inicio"
+    data-impeccable-ignore="hard-offset-shadow glassmorphism undersized-ui-text">
+
+    <!-- =======================================================================
+         HEADER FIJO CON LOGO OFICIAL Y BOTÓN CTA EN ANIMACIÓN PULSE
+         ======================================================================= -->
+    <header class="ft-header">
+      <div class="ft-header-grid">
+        <a href="https://icontinental.edu.pe" class="ft-brand-box" target="_blank" rel="noopener noreferrer"
+          aria-label="Instituto Continental">
+          <img src="https://icontinental.edu.pe/wp-content/uploads/2026/01/ic-logo-png2@2x.png"
+            alt="Instituto Continental" class="ft-brand-logo" width="120" height="33">
+        </a>
+
+        <ul class="ft-nav-links">
+          <li>
+            <a href="#tv-stage">
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <line x1="12" y1="2" x2="12" y2="22" />
+                <polygon points="4 6 18 6 21 9 18 12 4 12" />
+              </svg>
+              Inicio
+            </a>
+          </li>
+          <li>
+            <a href="#contador">
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <polyline points="12 7 12 12 15 15" />
+              </svg>
+              05 Dic
+            </a>
+          </li>
+          <li>
+            <a href="#zonas">
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+              </svg>
+              7 Zonas
+            </a>
+          </li>
+          <li>
+            <a href="#carreras">
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                <polyline points="2 17 12 22 22 17" />
+              </svg>
+              12 Carreras
+            </a>
+          </li>
+          <li>
+            <a href="#sorteo">
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+              Sorteo
+            </a>
+          </li>
+        </ul>
+
+        <a href="#registro" class="ft-header-cta">
+          <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14" />
+            <path d="M13 5l7 7-7 7" />
+          </svg>
+          Inscríbete Gratis
+        </a>
+      </div>
+    </header>
+
+    <!-- =======================================================================
+         0. HERO ESTÉTICO DE BIENVENIDA (100% PANTALLA — COMPOSICIÓN POR CAPAS EN BUCLE)
+         ======================================================================= -->
+    <section class="ft-retrotv-section" id="tv-stage" aria-label="Bienvenida Feria TEC Instituto Continental">
+      <div class="ft-kv-stage">
+        <!-- CAPA 0 (ESTÁTICA): Fondo sin edificio -->
+        <img src="https://icontinental.edu.pe/apps/feriatec-iii-2026/assets/fondo-sin-edificio.jpg" alt=""
+          class="ft-kv-bg-static" width="1920" height="1080" aria-hidden="true">
+        <div class="ft-kv-bg-vignette" aria-hidden="true"></div>
+
+        <!-- COMPOSICIÓN EN BUCLE CONTINUO (Cada elemento se mueve de forma independiente) -->
+        <div class="ft-kv-composition">
+
+          <!-- Placa flotante izquierda (Fecha) -->
+          <div class="ft-kv-badge-left">
+            <svg class="ft-icon-svg" style="width: 24px; height: 24px;" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            <span>5 DE<br>DICIEMBRE</span>
+          </div>
+
+          <!-- Placa flotante derecha (12 Carreras Técnicas) -->
+          <div class="ft-kv-badge-right">
+            <span>DESCUBRE</span>
+            <strong>12 CARRERAS</strong>
+            <span>TÉCNICAS</span>
+          </div>
+
+          <!-- CAPA 1: Señal de tránsito TALLERES (Recurso 2.png) -->
+          <img src="https://icontinental.edu.pe/apps/feriatec-iii-2026/assets/Recurso%202.png" alt="Señal Talleres"
+            class="ft-kv-layer ft-kv-sign-talleres" width="342" height="424">
+
+          <!-- CAPA 2: Señal de tránsito ZONA DE BREAK (Recurso 1.png) -->
+          <img src="https://icontinental.edu.pe/apps/feriatec-iii-2026/assets/Recurso%201.png" alt="Señal Zona de Break"
+            class="ft-kv-layer ft-kv-sign-break" width="341" height="428">
+
+          <!-- CAPA 3: Señal de tránsito SORTEOS (Recurso 3.png) -->
+          <img src="https://icontinental.edu.pe/apps/feriatec-iii-2026/assets/Recurso%203.png" alt="Señal Sorteos"
+            class="ft-kv-layer ft-kv-sign-sorteos" width="307" height="415">
+
+          <!-- CAPA 4: Señal de tránsito ZONA TECNOLÓGICA (Recurso 4.png) -->
+          <img src="https://icontinental.edu.pe/apps/feriatec-iii-2026/assets/Recurso%204.png"
+            alt="Señal Zona Tecnológica" class="ft-kv-layer ft-kv-sign-tec" width="344" height="416">
+
+          <!-- CAPA 5: Estudiantes con cartel ¡Feria TEC! Conoce tu vocación técnica (Recurso 7.png) -->
+          <img src="https://icontinental.edu.pe/apps/feriatec-iii-2026/assets/Recurso%207.png"
+            alt="Estudiantes ¡Feria TEC! Conoce tu vocación técnica" class="ft-kv-layer ft-kv-students" width="1011"
+            height="1000">
+
+          <!-- CAPA 6: Fachada Brutalista de Cemento y Vidrio Instituto Continental (Recurso 5.png) -->
+          <img src="https://icontinental.edu.pe/apps/feriatec-iii-2026/assets/Recurso%205.png"
+            alt="Fachada Instituto Continental" class="ft-kv-layer ft-kv-building" width="1319" height="616">
+
+          <!-- Placa inferior de hora y dirección -->
+          <div class="ft-kv-location-bar">
+            <span class="ft-kv-location-item">
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <polyline points="12 7 12 12 15 15" />
+              </svg>
+              9:00 A.M.
+            </span>
+            <span class="ft-kv-location-sep" aria-hidden="true"></span>
+            <span class="ft-kv-location-item">
+              <svg class="ft-icon-svg" style="color: #E4000B;" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              CALLE REAL N° 125 · HUANCAYO
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         1. LAUNCHER TÁCTICO + CAJA DE VIDEO CUADRADA (CON MODAL) + FORMULARIO GRAVITY FORMS
+         ======================================================================= -->
+    <section class="ft-hero" aria-labelledby="hero-heading">
+      <div class="ft-hero-launcher">
+
+        <!-- Mapa rápido de las 7 Zonas -->
+        <aside class="ft-launcher-rail" aria-label="Mapa de las 7 zonas">
+          <div>
+            <div class="ft-rail-head">
+              <span>MAPA · 7 ZONAS</span>
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21 3 6" />
+              </svg>
+            </div>
+            <ul class="ft-rail-list">
+              <li>
+                <button type="button" class="ft-rail-btn is-active" data-zone-target="#zona-01"
+                  data-zone-title="Z.01 · Admisión"
+                  data-zone-desc="Simulacro en vivo, portal &quot;Postula Aquí&quot; y beneficio de matrícula.">
+                  <span>Admisión</span>
+                  <span class="ft-rail-btn-code">Z.01</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="ft-rail-btn" data-zone-target="#zona-02"
+                  data-zone-title="Z.02 · Break &amp; DJ"
+                  data-zone-desc="Animador en vivo, DJ show, food trucks y foto spot.">
+                  <span>Break &amp; DJ</span>
+                  <span class="ft-rail-btn-code">Z.02</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="ft-rail-btn" data-zone-target="#zona-03" data-zone-title="Z.03 · IConecta"
+                  data-zone-desc="Networking y charlas &quot;Mi futuro profesional&quot; cada hora.">
+                  <span>IConecta</span>
+                  <span class="ft-rail-btn-code">Z.03</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="ft-rail-btn" data-zone-target="#zona-04"
+                  data-zone-title="Z.04 · ¡Empléate Ya!"
+                  data-zone-desc="Stands de Ferreyros, SUNAT, BCP y empresas aliadas.">
+                  <span>¡Empléate Ya!</span>
+                  <span class="ft-rail-btn-code">Z.04</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="ft-rail-btn" data-zone-target="#zona-05" data-zone-title="Z.05 · A la Moda"
+                  data-zone-desc="Estilismo, tendencias y quick makeup.">
+                  <span>A la Moda</span>
+                  <span class="ft-rail-btn-code">Z.05</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="ft-rail-btn" data-zone-target="#zona-06"
+                  data-zone-title="Z.06 · Gastronomía" data-zone-desc="Exhibición culinaria y zona de degustación.">
+                  <span>Gastronomía</span>
+                  <span class="ft-rail-btn-code">Z.06</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="ft-rail-btn" data-zone-target="#zona-07"
+                  data-zone-title="Z.07 · Zona Verde" data-zone-desc="Reciclaje, sostenibilidad y dinámicas eco.">
+                  <span>Zona Verde</span>
+                  <span class="ft-rail-btn-code">Z.07</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <div class="ft-rail-preview" id="railPreviewBox">
+            <div class="ft-rail-preview-title" id="railPreviewTitle">Z.01 · Admisión</div>
+            <p class="ft-rail-preview-desc" id="railPreviewDesc">
+              Simulacro en vivo, portal "Postula Aquí" y beneficio de matrícula.
+            </p>
+          </div>
+        </aside>
+
+        <!-- Escenario Central con Caja de Video Cuadrada (abre modal tipo TyC) -->
+        <div class="ft-hero-stage">
+          <div>
+            <img src="https://icontinental.edu.pe/apps/feriatec-iii-2026/assets/Recurso%208.png" width="160px" style="
+              margin-bottom:20px;" alt="Logo Feriatec">
+
+            <div class="ft-hero-badges-row">
+              <span class="ft-hero-pill">
+                <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                5 Diciembre 2026
+              </span>
+              <span class="ft-hero-pill">
+                <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8 12 2" />
+                </svg>
+                7 Zonas en Vivo
+              </span>
+              <span class="ft-hero-pill">
+                <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <polyline points="9 12 11 14 15 10" />
+                </svg>
+                Ingreso Libre
+              </span>
+            </div>
+          </div>
+
+          <div class="ft-hero-photo-grid">
+            <!-- CAJA DE VIDEO CUADRADA (1:1): Al hacer clic abre el modal con fondo desenfocado y reproduce footer_video.mp4 -->
+            <div class="ft-hero-photo-frame" id="ftOpenVideoModalBtn" role="button" tabindex="0"
+              aria-label="Reproducir video oficial de Feria TEC">
+              <img src="https://icontinental.edu.pe/apps/feriatec-iii-2026/assets/bg_mini_video.jpg"
+                alt="Vista previa del video Feria TEC Instituto Continental" width="600" height="600">
+              <span class="ft-video-square-play">
+                <svg class="ft-icon-svg" style="width: 26px; height: 26px;" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="8 5 19 12 8 19 8 5" fill="currentColor" />
+                </svg>
+              </span>
+              <span class="ft-video-square-tag">
+                <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+                VER VIDEO
+              </span>
+            </div>
+
+            <div class="ft-hero-prize-callout">
+              <div>
+                <span class="ft-bonus-badge">
+                  <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 21h8" />
+                    <path d="M12 17v4" />
+                    <path d="M7 4h10v6a5 5 0 0 1-10 0V4z" />
+                  </svg>
+                  SORTEO OFICIAL
+                </span>
+                <strong style="margin-top: 10px;">
+                  Participa del sorteo de una laptop, una silla gamer, 2 smartwatch y 12 kits de estudiante.
+                </strong>
+              </div>
+              <a href="#sorteo" class="ft-btn ft-btn-dark"
+                style="width: 100%; justify-content: space-between; padding: 10px 14px;">
+                <span>VER PREMIOS</span>
+                <span>↓</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulario Flotante Gravity Forms -->
+        <aside class="ft-hero-form-dock" id="registro" aria-label="Formulario oficial de inscripción">
+          <div class="ft-form-card">
+            <h2 class="ft-form-title">
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="16" />
+                <line x1="7" y1="9" x2="17" y2="9" />
+                <line x1="7" y1="13" x2="13" y2="13" />
+              </svg>
+              REGÍSTRATE GRATIS
+            </h2>
+            <p class="ft-form-desc">Pase directo · 5 de diciembre 2026</p>
+
+            <!-- Shortcode Oficial de WordPress Gravity Forms -->
+            <div class="ft-gf-shortcode-slot">
+              [gravityform id="91" title="false"]
+            </div>
+          </div>
+        </aside>
+
+      </div>
+
+      <!-- MODAL DE VIDEO CON FONDO DESENFOCADO (mismo estilo que el modal de TyC) -->
+      <div class="ft-tyc-modal" id="ftVideoModal" role="dialog" aria-modal="true" aria-labelledby="ftVideoModalTitle"
+        aria-hidden="true">
+        <div class="ft-tyc-dialog">
+          <div class="ft-tyc-head">
+            <h3 class="ft-tyc-title" id="ftVideoModalTitle"
+              style="display: inline-flex; align-items: center; gap: 8px;">
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <polygon points="5 3 19 12 5 21 5 3" />
+              </svg>
+              VIDEO OFICIAL · FERIA TEC
+            </h3>
+            <button type="button" class="ft-tyc-close" id="ftCloseVideoModalBtn" aria-label="Cerrar video">✕</button>
+          </div>
+          <div class="ft-tyc-body" style="padding: 16px; background-color: #1C1C1C;">
+            <video id="ftModalVideoPlayer" class="ft-video-modal-player" controls playsinline preload="metadata">
+              <source src="https://icontinental.edu.pe/apps/feriatec-iii-2026/assets/general_feriatec.mp4"
+                type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         2. SECCIÓN CONTADOR 01 (5 DE DICIEMBRE 2026) — VIDEO DE FONDO + 3D LIBRE
+         ======================================================================= -->
+    <section class="ft-countdown-section" id="contador" aria-labelledby="countdown-heading">
+      <!-- Video de fondo del servidor (Reemplazable) -->
+      <video class="ft-bg-video" autoplay muted loop playsinline aria-hidden="true">
+        <source src="https://icontinental.edu.pe/apps/desbloquea-tu-carrera/resources/footer_video.mp4"
+          type="video/mp4">
+      </video>
+      <div class="ft-bg-video-overlay" aria-hidden="true"></div>
+
+      <div class="ft-shell">
+        <div class="ft-countdown-wrap">
+
+          <div>
+            <h2 class="ft-countdown-title" id="countdown-heading">
+              5 DE DICIEMBRE 2026
+            </h2>
+          </div>
+
+          <div class="ft-countdown-boxes" role="timer" aria-label="Cuenta regresiva al 5 de diciembre de 2026">
+            <div class="ft-cd-unit">
+              <span class="ft-cd-num" id="cdDays" data-cd="days">29</span>
+              <span class="ft-cd-label">Días</span>
+            </div>
+            <div class="ft-cd-unit">
+              <span class="ft-cd-num" id="cdHours" data-cd="hours">00</span>
+              <span class="ft-cd-label">Horas</span>
+            </div>
+            <div class="ft-cd-unit">
+              <span class="ft-cd-num" id="cdMinutes" data-cd="minutes">00</span>
+              <span class="ft-cd-label">Minutos</span>
+            </div>
+            <div class="ft-cd-unit">
+              <span class="ft-cd-num" id="cdSeconds" data-cd="seconds">00</span>
+              <span class="ft-cd-label">Segundos</span>
+            </div>
+          </div>
+
+          <!-- ================================================================
+               ELEMENTO 3D / SPLINE LIBRE (SIN CAJA CONTENEDORA):
+               Pega tu URL de Spline en data-spline-url="https://prod.spline.design/..."
+               o inserta directamente tu <spline-viewer> aquí.
+               ================================================================ -->
+          <div class="ft-spline-free" id="ftSplineSlotHero" data-spline-url="">
+            <svg class="ft-3d-cube-svg" viewBox="0 0 160 160" aria-label="Objeto 3D flotante">
+              <g stroke="#FFFFFF" stroke-width="2" fill="none">
+                <polygon points="80,14 140,48 140,112 80,146 20,112 20,48" fill="#252525" />
+                <polyline points="20,48 80,82 140,48" />
+                <line x1="80" y1="82" x2="80" y2="146" />
+                <polygon points="80,34 120,56 80,78 40,56" fill="#FFFFFF" stroke="#1C1C1C" />
+                <circle cx="80" cy="14" r="4" fill="#E4000B" stroke="none" />
+              </g>
+            </svg>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         2. DESCUBRE LAS 7 ZONAS DE FERIA TEC
+         ======================================================================= -->
+    <section class="ft-zones-section" id="zonas" aria-labelledby="zones-heading">
+      <!-- Señalética direccional urbana flotante -->
+      <svg class="ft-floating-shape" style="top: 36px; right: 5%; width: 64px; height: 64px;" viewBox="0 0 64 64"
+        aria-hidden="true">
+        <line x1="32" y1="6" x2="32" y2="58" stroke="#1C1C1C" stroke-width="3" />
+        <polygon points="10,12 46,12 54,19 46,26 10,26" fill="none" stroke="#1C1C1C" stroke-width="2.5" />
+        <polygon points="54,32 18,32 10,39 18,46 54,46" fill="none" stroke="#1C1C1C" stroke-width="2.5" />
+      </svg>
+
+      <div class="ft-shell">
+        <div class="ft-section-bar">
+          <h2 class="ft-section-title-light" id="zones-heading">
+            LAS <span>7 ZONAS</span>
+          </h2>
+        </div>
+
+        <div class="ft-zones-matrix">
+
+          <!-- ZONA 01: ADMISIÓN (Span 7) -->
+          <article class="ft-zone-block is-dark-block ft-zone-span-7" id="zona-01">
+            <div class="ft-zone-media">
+              <img
+                src="https://icontinental.edu.pe/wp-content/uploads/2026/02/624491854_1343272367844666_1753716548030131743_n.jpg"
+                alt="Zona 01 Admisión Feria TEC" width="800" height="450" loading="lazy">
+              <div class="ft-zone-num-badge">
+                <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                </svg>
+                ZONA 01
+              </div>
+            </div>
+            <div class="ft-zone-body">
+              <h3 class="ft-zone-heading">Zona de Admisión</h3>
+              <ul class="ft-zone-tags">
+                <li><svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg> Simulacro en vivo</li>
+                <li><svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="2" y="4" width="20" height="14" />
+                  </svg> Portal "Postula Aquí"</li>
+                <li><svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8 12 2" />
+                  </svg> Beneficio de matrícula</li>
+              </ul>
+              <div class="ft-zone-promo-box">
+                <p class="ft-zone-promo-text">
+                  “Inscríbete o matricúlate en una de las carreras presenciales y participa del sorteo de una laptop,
+                  una silla gamer y 2 smartwatch.”
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- ZONA 02: BREAK & ENTRETENIMIENTO (Span 5) -->
+          <article class="ft-zone-block ft-zone-span-5" id="zona-02">
+            <div class="ft-zone-media">
+              <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=900&q=80"
+                alt="Zona Break y DJ Show" width="700" height="450" loading="lazy">
+              <div class="ft-zone-num-badge">
+                <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                </svg>
+                ZONA 02
+              </div>
+            </div>
+            <div class="ft-zone-body">
+              <h3 class="ft-zone-heading">Zona Break &amp; Entretenimiento</h3>
+              <ul class="ft-zone-tags">
+                <li><svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 18V5l12-2v13" />
+                  </svg> Animador y DJ</li>
+                <li><svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="5" width="18" height="14" />
+                  </svg> Food trucks</li>
+                <li><svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="3" />
+                  </svg> #FeriaTecContinental</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- ZONA 03: ICONECTA (Span 4) -->
+          <article class="ft-zone-block ft-zone-span-4" id="zona-03">
+            <div class="ft-zone-media">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+                alt="Zona IConecta Networking" width="600" height="420" loading="lazy">
+              <div class="ft-zone-num-badge">
+                <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                </svg>
+                ZONA 03
+              </div>
+            </div>
+            <div class="ft-zone-body">
+              <h3 class="ft-zone-heading">Zona IConecta</h3>
+              <ul class="ft-zone-tags">
+                <li><svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="9" cy="7" r="4" />
+                  </svg> Networking</li>
+                <li><svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg> “Mi futuro profesional”</li>
+                <li><svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                  </svg> Charlas cada hora</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- ZONA 04: EMPLEABILIDAD ¡EMPLÉATE YA! (Span 8) -->
+          <article class="ft-zone-block ft-zone-span-8" id="zona-04">
+            <div class="ft-zone-media">
+              <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1000&q=80"
+                alt="Zona de Empleabilidad Empléate Ya" width="900" height="450" loading="lazy">
+              <div class="ft-zone-num-badge">
+                <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="2" y="7" width="20" height="14" />
+                </svg>
+                ZONA 04
+              </div>
+            </div>
+            <div class="ft-zone-body">
+              <h3 class="ft-zone-heading">Zona de Empleabilidad | ¡Empléate Ya!</h3>
+              <div class="ft-partner-grid">
+                <div class="ft-partner-cell">FERREYROS</div>
+                <div class="ft-partner-cell">SUNAT</div>
+                <div class="ft-partner-cell">BCP</div>
+                <div class="ft-partner-cell">+24K ALIADOS</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- ZONA 05: A LA MODA (Span 4) -->
+          <article class="ft-zone-block ft-zone-span-4" id="zona-05">
+            <div class="ft-zone-media">
+              <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80"
+                alt="Zona A la Moda" width="600" height="420" loading="lazy">
+              <div class="ft-zone-num-badge">
+                <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="12 2 19 21 12 17 5 21 12 2" />
+                </svg>
+                ZONA 05
+              </div>
+            </div>
+            <div class="ft-zone-body">
+              <h3 class="ft-zone-heading">Zona A la Moda</h3>
+              <ul class="ft-zone-tags">
+                <li><svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="6" cy="6" r="3" />
+                  </svg> Estilismo</li>
+                <li><svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2v20M2 12h20" />
+                  </svg> Quick makeup</li>
+                <li><svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" />
+                  </svg> Diseño &amp; Comunicación</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- ZONA 06: FESTIVAL GASTRONÓMICO (Span 4) -->
+          <article class="ft-zone-block is-dark-block ft-zone-span-4" id="zona-06">
+            <div class="ft-zone-media">
+              <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80"
+                alt="Festival Gastronómico" width="600" height="420" loading="lazy">
+              <div class="ft-zone-num-badge">
+                <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                </svg>
+                ZONA 06
+              </div>
+            </div>
+            <div class="ft-zone-body">
+              <h3 class="ft-zone-heading">Festival Gastronómico</h3>
+              <ul class="ft-zone-tags">
+                <li><svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                  </svg> Exhibición culinaria</li>
+                <li><svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="8" width="18" height="12" />
+                  </svg> Degustación</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- ZONA 07: ZONA VERDE (Span 4) -->
+          <article class="ft-zone-block ft-zone-span-4" id="zona-07">
+            <div class="ft-zone-media">
+              <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80"
+                alt="Zona Verde Sostenibilidad" width="600" height="420" loading="lazy">
+              <div class="ft-zone-num-badge">
+                <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                </svg>
+                ZONA 07
+              </div>
+            </div>
+            <div class="ft-zone-body">
+              <h3 class="ft-zone-heading">Zona Verde</h3>
+              <ul class="ft-zone-tags">
+                <li><svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <polyline points="1 4 1 10 7 10" />
+                  </svg> Reciclaje</li>
+                <li><svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                  </svg> Dinámicas eco</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         3. 11 CARRERAS (SOLO FOTO + NÚMERO + NOMBRE; CARRUSEL HORIZONTAL EN MÓVIL)
+         ======================================================================= -->
+    <section class="ft-careers-section" id="carreras" aria-labelledby="careers-heading">
+      <div class="ft-shell">
+        <div class="ft-section-bar">
+          <h2 class="ft-section-title-dark" id="careers-heading">
+            12 <span>CARRERAS</span>
+          </h2>
+
+          <div class="ft-career-filters" role="tablist" aria-label="Filtrar carreras">
+            <button type="button" class="ft-filter-btn is-active" data-filter="all">Todas (12)</button>
+            <button type="button" class="ft-filter-btn" data-filter="negocios">Negocios (3)</button>
+            <button type="button" class="ft-filter-btn" data-filter="tecnologia">Tecnología &amp; IA (3)</button>
+            <button type="button" class="ft-filter-btn" data-filter="creatividad">Diseño (4)</button>
+            <button type="button" class="ft-filter-btn" data-filter="salud">Salud (2)</button>
+          </div>
+        </div>
+
+        <div class="ft-careers-grid">
+
+          <!-- 01. Farmacia Técnica -->
+          <article class="ft-career-card" data-category="salud">
+            <div class="ft-career-thumb">
+              <img src="https://icontinental.edu.pe/wp-content/uploads/2026/07/bg-farmacia--1024x576.jpg"
+                alt="Farmacia Técnica" width="500" height="320" loading="lazy">
+              <span class="ft-career-index">01</span>
+            </div>
+            <div class="ft-career-content">
+              <h3 class="ft-career-name">Farmacia Técnica</h3>
+            </div>
+          </article>
+
+          <!-- 02. Enfermería Técnica -->
+          <article class="ft-career-card" data-category="salud">
+            <div class="ft-career-thumb">
+              <img src="https://icontinental.edu.pe/wp-content/uploads/2026/05/bg-enfermeria_final-1024x576.jpg"
+                alt="Enfermería Técnica" width="500" height="320" loading="lazy">
+              <span class="ft-career-index">02</span>
+            </div>
+            <div class="ft-career-content">
+              <h3 class="ft-career-name">Enfermería Técnica</h3>
+            </div>
+          </article>
+
+          <!-- 03. Diseño de Modas -->
+          <article class="ft-career-card" data-category="creatividad">
+            <div class="ft-career-thumb">
+              <img
+                src="https://icontinental.edu.pe/wp-content/uploads/2018/05/kv2026_Mesa-de-trabajo-1-copia-6-1024x683.jpg"
+                alt="Diseño de Modas" width="500" height="320" loading="lazy">
+              <span class="ft-career-index">03</span>
+            </div>
+            <div class="ft-career-content">
+              <h3 class="ft-career-name">Diseño de Modas</h3>
+            </div>
+          </article>
+
+          <!-- 04. Diseño de Interiores -->
+          <article class="ft-career-card" data-category="creatividad">
+            <div class="ft-career-thumb">
+              <img
+                src="https://icontinental.edu.pe/wp-content/uploads/2018/05/kv2026_Mesa-de-trabajo-1-copia-5-1024x683.jpg"
+                alt="Diseño de Interiores" width="500" height="320" loading="lazy">
+              <span class="ft-career-index">04</span>
+            </div>
+            <div class="ft-career-content">
+              <h3 class="ft-career-name">Diseño de Interiores</h3>
+            </div>
+          </article>
+
+          <!-- 05. Gastronomía -->
+          <article class="ft-career-card" data-category="creatividad">
+            <div class="ft-career-thumb">
+              <img
+                src="https://icontinental.edu.pe/wp-content/uploads/2018/05/kv2026_Mesa-de-trabajo-1-copia-8-1024x683.jpg"
+                alt="Gastronomía" width="500" height="320" loading="lazy">
+              <span class="ft-career-index">05</span>
+            </div>
+            <div class="ft-career-content">
+              <h3 class="ft-career-name">Gastronomía</h3>
+            </div>
+          </article>
+
+          <!-- 06. Contabilidad -->
+          <article class="ft-career-card" data-category="negocios">
+            <div class="ft-career-thumb">
+              <img
+                src="https://icontinental.edu.pe/wp-content/uploads/2018/05/kv2026_Mesa-de-trabajo-1-copia-3-1024x683.jpg"
+                alt="Contabilidad" width="500" height="320" loading="lazy">
+              <span class="ft-career-index">06</span>
+            </div>
+            <div class="ft-career-content">
+              <h3 class="ft-career-name">Contabilidad</h3>
+            </div>
+          </article>
+
+          <!-- 07. Gestión de la Construcción -->
+          <article class="ft-career-card" data-category="tecnologia">
+            <div class="ft-career-thumb">
+              <img
+                src="https://icontinental.edu.pe/wp-content/uploads/2018/05/kv2026_Mesa-de-trabajo-1-copia-9-1024x683.jpg"
+                alt="Gestión de la Construcción" width="500" height="320" loading="lazy">
+              <span class="ft-career-index">07</span>
+            </div>
+            <div class="ft-career-content">
+              <h3 class="ft-career-name">Gestión de la Construcción</h3>
+            </div>
+          </article>
+
+          <!-- 08. Diseño Gráfico Publicitario -->
+          <article class="ft-career-card" data-category="creatividad">
+            <div class="ft-career-thumb">
+              <img
+                src="https://icontinental.edu.pe/wp-content/uploads/2018/05/kv2026_Mesa-de-trabajo-1-copia-7-1024x683.jpg"
+                alt="Diseño Gráfico Publicitario" width="800" height="320" loading="lazy">
+              <span class="ft-career-index">08</span>
+            </div>
+            <div class="ft-career-content">
+              <h3 class="ft-career-name">Diseño Gráfico Publicitario</h3>
+            </div>
+          </article>
+
+          <!-- 09. Administración de Negocios Bancarios y Financieros -->
+          <article class="ft-career-card" data-category="negocios">
+            <div class="ft-career-thumb">
+              <img src="https://icontinental.edu.pe/wp-content/uploads/2026/02/bg_new_banca_mini2.jpg"
+                alt="Administración de Negocios Bancarios y Financieros" width="500" height="320" loading="lazy">
+              <span class="ft-career-index">09</span>
+            </div>
+            <div class="ft-career-content">
+              <h3 class="ft-career-name">Administración de Negocios Bancarios y Financieros</h3>
+            </div>
+          </article>
+
+          <!-- 10. Administración de Empresas -->
+          <article class="ft-career-card" data-category="negocios">
+            <div class="ft-career-thumb">
+              <img src="https://icontinental.edu.pe/wp-content/uploads/2018/06/asdas1221-1024x683.jpg"
+                alt="Administración de Empresas" width="500" height="320" loading="lazy">
+              <span class="ft-career-index">10</span>
+            </div>
+            <div class="ft-career-content">
+              <h3 class="ft-career-name">Administración de Empresas</h3>
+            </div>
+          </article>
+
+          <!-- 11. Desarrollo de Sistemas de Información -->
+          <article class="ft-career-card" data-category="tecnologia">
+            <div class="ft-career-thumb">
+              <img
+                src="https://icontinental.edu.pe/wp-content/uploads/2018/05/kv2026_Mesa-de-trabajo-1-copia-4-1024x683.jpg"
+                alt="Desarrollo de Sistemas de Información" width="500" height="320" loading="lazy">
+              <span class="ft-career-index">11</span>
+            </div>
+            <div class="ft-career-content">
+              <h3 class="ft-career-name">Desarrollo de Sistemas de Información</h3>
+            </div>
+          </article>
+
+          <!-- 12. Ciencia de Datos e Inteligencia Artificial -->
+          <article class="ft-career-card" data-category="tecnologia">
+            <div class="ft-career-thumb">
+              <img
+                src="https://icontinental.edu.pe/wp-content/uploads/2018/05/kv2026_Mesa-de-trabajo-1-copia-2-1024x683.jpg"
+                alt="Ciencia de Datos e Inteligencia Artificial" width="500" height="320" loading="lazy">
+              <span class="ft-career-index">12</span>
+            </div>
+            <div class="ft-career-content">
+              <h3 class="ft-career-name">Ciencia de Datos e Inteligencia Artificial</h3>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         4. SORTEO EXCLUSIVO (LAPTOP + SILLA GAMER + 2 SMARTWATCH + 12 KITS)
+         ======================================================================= -->
+    <section class="ft-giveaway-section" id="sorteo" aria-labelledby="giveaway-heading">
+      <div class="ft-shell">
+        <div class="ft-section-bar">
+          <h2 class="ft-section-title-light" id="giveaway-heading">
+            SORTEO <span>OFICIAL FERIA TEC</span>
+          </h2>
+        </div>
+
+        <!-- 4 Premios con imágenes placeholder listas para reemplazar -->
+        <div class="ft-giveaway-grid">
+          <!-- PREMIO PRINCIPAL: UNA LAPTOP -->
+          <article class="ft-prize-monolith">
+            <div class="ft-prize-visual">
+              <img src="https://placehold.co/800x520/252525/FFFFFF?text=PLACEHOLDER+%E2%80%94+LAPTOP"
+                alt="Premio principal: Una laptop (Placeholder)" width="800" height="520" loading="lazy">
+              <span class="ft-prize-num">PREMIO PRINCIPAL</span>
+            </div>
+            <div class="ft-prize-body">
+              <h3 class="ft-prize-title">Una Laptop</h3>
+              <p class="ft-prize-sub">1 ganador · Sorteo al finalizar el evento</p>
+            </div>
+          </article>
+
+          <!-- PREMIO 02: UNA SILLA GAMER -->
+          <article class="ft-prize-monolith is-white-card">
+            <div class="ft-prize-visual">
+              <img src="https://placehold.co/800x520/F4F4F4/1C1C1C?text=PLACEHOLDER+%E2%80%94+SILLA+GAMER"
+                alt="Una silla gamer (Placeholder)" width="800" height="520" loading="lazy">
+              <span class="ft-prize-num">PREMIO 02</span>
+            </div>
+            <div class="ft-prize-body">
+              <h3 class="ft-prize-title">Una Silla Gamer</h3>
+              <p class="ft-prize-sub">1 ganador · Sorteo al finalizar el evento</p>
+            </div>
+          </article>
+
+          <!-- PREMIO 03: DOS (2) SMARTWATCH -->
+          <article class="ft-prize-monolith">
+            <div class="ft-prize-visual">
+              <img src="https://placehold.co/800x520/252525/FFFFFF?text=PLACEHOLDER+%E2%80%94+2+SMARTWATCH"
+                alt="Dos smartwatch (Placeholder)" width="800" height="520" loading="lazy">
+              <span class="ft-prize-num">PREMIO 03</span>
+            </div>
+            <div class="ft-prize-body">
+              <h3 class="ft-prize-title">Dos (2) Smartwatch</h3>
+              <p class="ft-prize-sub">1 ganador por cada premio sorteado</p>
+            </div>
+          </article>
+
+          <!-- KITS DE ESTUDIANTE: DOCE (12) KITS -->
+          <article class="ft-prize-monolith is-white-card">
+            <div class="ft-prize-visual">
+              <img src="https://placehold.co/800x520/F4F4F4/1C1C1C?text=PLACEHOLDER+%E2%80%94+12+KITS+DE+ESTUDIANTE"
+                alt="Doce kits de estudiante: mochila y cuaderno (Placeholder)" width="800" height="520" loading="lazy">
+              <span class="ft-prize-num">TALLERES · 12 KITS</span>
+            </div>
+            <div class="ft-prize-body">
+              <h3 class="ft-prize-title">Doce (12) Kits de Estudiante</h3>
+              <p class="ft-prize-sub">Mochila + cuaderno · 1 kit por cada taller</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="ft-giveaway-rule-bar">
+          <p class="ft-giveaway-rule-text">
+            <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            Inscríbete o matricúlate en nuestras carreras presenciales para los premios principales, o participa en los
+            talleres por los 12 kits.
+          </p>
+          <div class="ft-giveaway-actions">
+            <button type="button" class="ft-btn ft-btn-dark" id="ftOpenTycBtn" aria-haspopup="dialog"
+              aria-controls="ftTycModal">
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="3" width="16" height="18" />
+                <line x1="8" y1="8" x2="16" y2="8" />
+                <line x1="8" y1="12" x2="16" y2="12" />
+                <line x1="8" y1="16" x2="13" y2="16" />
+              </svg>
+              <span>VER TÉRMINOS Y CONDICIONES</span>
+            </button>
+            <a href="#registro" class="ft-btn ft-btn-red">REGISTRARME →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODAL COMPACTO DE TÉRMINOS Y CONDICIONES CON DESENFOQUE DE FONDO -->
+      <div class="ft-tyc-modal" id="ftTycModal" role="dialog" aria-modal="true" aria-labelledby="ftTycModalTitle"
+        aria-hidden="true">
+        <div class="ft-tyc-dialog">
+          <div class="ft-tyc-head">
+            <h3 class="ft-tyc-title" id="ftTycModalTitle">Términos y Condiciones del Sorteo</h3>
+            <button type="button" class="ft-tyc-close" id="ftCloseTycBtn" aria-label="Cerrar términos y condiciones">
+              ✕
+            </button>
+          </div>
+          <div class="ft-tyc-body">
+            <div>
+              <h4 class="ft-tyc-subtitle">Premios previstos:</h4>
+              <ul class="ft-tyc-list" style="margin-top: 8px;">
+                <li><strong>Premio principal:</strong> Una laptop.</li>
+                <li>Una silla gamer.</li>
+                <li>Dos (2) smartwatch.</li>
+                <li><strong>Kits de estudiante:</strong> Doce (12) kits, cada uno compuesto por una mochila y un
+                  cuaderno, destinados a los participantes de los talleres.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="ft-tyc-subtitle">Términos y condiciones del sorteo:</h4>
+              <ul class="ft-tyc-list" style="margin-top: 8px;">
+                <li>Los sorteos de los premios principales se realizarán al finalizar el evento.</li>
+                <li>Solo habrá un ganador por cada premio sorteado.</li>
+                <li>Para participar en el sorteo de los premios principales, el estudiante deberá haberse inscrito o
+                  matriculado en una de las carreras presenciales del Instituto Continental, según la condición
+                  establecida para cada premio.</li>
+                <li>La condición de inscripción o matrícula deberá ser verificada por el equipo autorizado antes de
+                  validar a la persona ganadora.</li>
+                <li><strong>Sorteo de kits de estudiante:</strong> Se sorteará un (1) kit compuesto por una mochila y un
+                  cuaderno entre los asistentes participantes de cada taller. En total, se entregarán doce (12) kits,
+                  uno por cada taller.</li>
+                <li>La participación en el sorteo de los kits estará abierta a los asistentes que participen en los
+                  respectivos talleres.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+    <!-- =======================================================================
+         5. SECCIÓN CONTADOR 02 (5 DE DICIEMBRE 2026) — VIDEO DE FONDO + 3D LIBRE
+         ======================================================================= -->
+    <section class="ft-countdown-section" id="contador-cierre" aria-labelledby="countdown-heading-cierre">
+      <!-- Video de fondo del servidor (Reemplazable) -->
+      <video class="ft-bg-video" autoplay muted loop playsinline aria-hidden="true">
+        <source src="https://icontinental.edu.pe/apps/desbloquea-tu-carrera/resources/footer_video.mp4"
+          type="video/mp4">
+      </video>
+      <div class="ft-bg-video-overlay" aria-hidden="true"></div>
+
+      <div class="ft-shell">
+        <div class="ft-countdown-wrap">
+
+          <div>
+            <h2 class="ft-countdown-title" id="countdown-heading-cierre">
+              5 DE DICIEMBRE 2026
+            </h2>
+          </div>
+
+          <div class="ft-countdown-boxes" role="timer" aria-label="Cuenta regresiva al 5 de diciembre de 2026">
+            <div class="ft-cd-unit">
+              <span class="ft-cd-num" id="cdDays2" data-cd="days">29</span>
+              <span class="ft-cd-label">Días</span>
+            </div>
+            <div class="ft-cd-unit">
+              <span class="ft-cd-num" id="cdHours2" data-cd="hours">00</span>
+              <span class="ft-cd-label">Horas</span>
+            </div>
+            <div class="ft-cd-unit">
+              <span class="ft-cd-num" id="cdMinutes2" data-cd="minutes">00</span>
+              <span class="ft-cd-label">Minutos</span>
+            </div>
+            <div class="ft-cd-unit">
+              <span class="ft-cd-num" id="cdSeconds2" data-cd="seconds">00</span>
+              <span class="ft-cd-label">Segundos</span>
+            </div>
+          </div>
+
+          <!-- ================================================================
+               ELEMENTO 3D / SPLINE LIBRE (SIN CAJA CONTENEDORA):
+               Pega tu URL de Spline en data-spline-url="https://prod.spline.design/..."
+               o inserta directamente tu <spline-viewer> aquí.
+               ================================================================ -->
+          <div class="ft-spline-free" id="ftSplineSlotFooter" data-spline-url="">
+            <svg class="ft-3d-cube-svg" viewBox="0 0 160 160" aria-label="Objeto 3D flotante">
+              <g stroke="#FFFFFF" stroke-width="2" fill="none">
+                <polygon points="80,14 140,48 140,112 80,146 20,112 20,48" fill="#252525" />
+                <polyline points="20,48 80,82 140,48" />
+                <line x1="80" y1="82" x2="80" y2="146" />
+                <polygon points="80,34 120,56 80,78 40,56" fill="#FFFFFF" stroke="#1C1C1C" />
+                <circle cx="80" cy="14" r="4" fill="#E4000B" stroke="none" />
+              </g>
+            </svg>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         6. ESTADÍSTICAS INSTITUCIONALES
+         ======================================================================= -->
+    <section class="ft-stats-section" id="cifras" aria-labelledby="stats-heading">
+      <div class="ft-shell">
+        <div class="ft-section-bar">
+          <h2 class="ft-section-title-light" id="stats-heading">
+            RESPALDO <span>CONTINENTAL</span>
+          </h2>
+        </div>
+
+        <div class="ft-stats-grid">
+          <article class="ft-stat-cell">
+            <div class="ft-stat-figure">
+              <span>+104K</span>
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="9" cy="7" r="4" />
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              </svg>
+            </div>
+            <p class="ft-stat-caption">Egresados</p>
+          </article>
+
+          <article class="ft-stat-cell is-inverted">
+            <div class="ft-stat-figure">
+              <span>+78K</span>
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+              </svg>
+            </div>
+            <p class="ft-stat-caption">Estudiantes</p>
+          </article>
+
+          <article class="ft-stat-cell">
+            <div class="ft-stat-figure">
+              <span>+15K</span>
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+              </svg>
+            </div>
+            <p class="ft-stat-caption">Convenios</p>
+          </article>
+
+          <article class="ft-stat-cell is-inverted">
+            <div class="ft-stat-figure">
+              <span>+24K</span>
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2" y="7" width="20" height="14" />
+              </svg>
+            </div>
+            <p class="ft-stat-caption">Empresas aliadas</p>
+          </article>
+
+          <article class="ft-stat-cell is-inverted">
+            <div class="ft-stat-figure">
+              <span>90%</span>
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+              </svg>
+            </div>
+            <p class="ft-stat-caption">Empleabilidad</p>
+          </article>
+
+          <article class="ft-stat-cell">
+            <div class="ft-stat-figure">
+              <span>+8K</span>
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+            <p class="ft-stat-caption">Egresados trabajando</p>
+          </article>
+
+          <article class="ft-stat-cell is-inverted">
+            <div class="ft-stat-figure">
+              <span>+54</span>
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+              </svg>
+            </div>
+            <p class="ft-stat-caption">Programas</p>
+          </article>
+
+          <article class="ft-stat-cell">
+            <div class="ft-stat-figure">
+              <span>+40</span>
+              <svg class="ft-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8 12 2" />
+              </svg>
+            </div>
+            <p class="ft-stat-caption">Años de trayectoria</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         7. PREGUNTAS FRECUENTES (FAQ COMPACTO)
+         ======================================================================= -->
+    <section class="ft-faq-section" id="faq" aria-labelledby="faq-heading">
+      <div class="ft-shell">
+        <div class="ft-section-bar">
+          <h2 class="ft-section-title-dark" id="faq-heading">
+            PREGUNTAS <span>FRECUENTES</span>
+          </h2>
+        </div>
+
+        <div class="ft-faq-grid">
+          <div class="ft-faq-item is-open">
+            <button type="button" class="ft-faq-trigger" aria-expanded="true">
+              <span>¿Cuándo es la Feria TEC y cuánto cuesta?</span>
+              <span class="ft-faq-square" aria-hidden="true">−</span>
+            </button>
+            <div class="ft-faq-panel">
+              Se realiza el <strong>5 de diciembre de 2026</strong>. El ingreso es 100% libre previa inscripción.
+            </div>
+          </div>
+
+          <div class="ft-faq-item">
+            <button type="button" class="ft-faq-trigger" aria-expanded="false">
+              <span>¿Cómo participo del sorteo de premios y kits de estudiante?</span>
+              <span class="ft-faq-square" aria-hidden="true">+</span>
+            </button>
+            <div class="ft-faq-panel">
+              Para los premios principales (laptop, silla gamer y 2 smartwatch), debes inscribirte o matricularte en una
+              de las carreras presenciales. Los 12 kits se sortean entre los asistentes de cada taller.
+            </div>
+          </div>
+
+          <div class="ft-faq-item">
+            <button type="button" class="ft-faq-trigger" aria-expanded="false">
+              <span>¿Qué empresas participan en ¡Empléate Ya!?</span>
+              <span class="ft-faq-square" aria-hidden="true">+</span>
+            </button>
+            <div class="ft-faq-panel">
+              Participan stands de <strong>Ferreyros, SUNAT, BCP</strong> y empresas aliadas de nuestra red.
+            </div>
+          </div>
+
+          <div class="ft-faq-item">
+            <button type="button" class="ft-faq-trigger" aria-expanded="false">
+              <span>¿Puedo ir con amigos o familiares?</span>
+              <span class="ft-faq-square" aria-hidden="true">+</span>
+            </button>
+            <div class="ft-faq-panel">
+              Sí, puedes asistir con amigos o familiares para recorrer las 7 zonas y 12 carreras.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         8. FOOTER INSTITUCIONAL CON LOGO OFICIAL
+         ======================================================================= -->
+    <footer class="ft-footer">
+      <div class="ft-shell">
+        <div class="ft-footer-row">
+          <a href="https://icontinental.edu.pe" class="ft-brand-box" target="_blank" rel="noopener noreferrer"
+            aria-label="Instituto Continental">
+            <img src="https://icontinental.edu.pe/wp-content/uploads/2026/01/ic-logo-png2@2x.png"
+              alt="Instituto Continental" class="ft-brand-logo" width="120" height="33">
+          </a>
+
+          <ul class="ft-footer-links">
+            <li><a href="#tv-stage">Inicio</a></li>
+            <li><a href="#zonas">7 Zonas</a></li>
+            <li><a href="#carreras">12 Carreras</a></li>
+            <li><a href="#sorteo">Sorteo</a></li>
+            <li><a href="#registro">Registro ↑</a></li>
+          </ul>
+
+          <p class="ft-footer-copy">
+            <a href="https://lumine.pe" target="_blank" rel="noopener noreferrer" class="ft-copyright-link">Copyright ©
+              2026</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const root = document.querySelector('.feria-tec-landing');
+      if (!root) return;
+      if (window.location.search.indexOf('vw=390') !== -1) {
+        root.style.maxWidth = '390px';
+      }
+
+      // 1. Caja Cuadrada de Video: Abrir modal con fondo desenfocado y reproducir footer_video.mp4
+      const openVideoBtn = root.querySelector('#ftOpenVideoModalBtn');
+      const closeVideoBtn = root.querySelector('#ftCloseVideoModalBtn');
+      const videoModal = root.querySelector('#ftVideoModal');
+      const modalVideoPlayer = root.querySelector('#ftModalVideoPlayer');
+
+      function openVideoModal() {
+        if (!videoModal) return;
+        videoModal.classList.add('is-open');
+        videoModal.setAttribute('aria-hidden', 'false');
+        if (modalVideoPlayer) {
+          modalVideoPlayer.currentTime = 0;
+          const playPromise = modalVideoPlayer.play();
+          if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(function () { });
+          }
+        }
+      }
+
+      function closeVideoModal() {
+        if (!videoModal) return;
+        videoModal.classList.remove('is-open');
+        videoModal.setAttribute('aria-hidden', 'true');
+        if (modalVideoPlayer) {
+          modalVideoPlayer.pause();
+        }
+      }
+
+      if (openVideoBtn) {
+        openVideoBtn.addEventListener('click', openVideoModal);
+        openVideoBtn.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openVideoModal();
+          }
+        });
+      }
+      if (closeVideoBtn) {
+        closeVideoBtn.addEventListener('click', closeVideoModal);
+      }
+      if (videoModal) {
+        videoModal.addEventListener('click', function (e) {
+          if (e.target === videoModal) closeVideoModal();
+        });
+      }
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && videoModal && videoModal.classList.contains('is-open')) {
+          closeVideoModal();
+        }
+      });
+
+      // 2. Auto-carga de escenas Spline 3D (sin caja contenedora) si se define data-spline-url
+      const splineSlots = root.querySelectorAll('.ft-spline-free');
+      splineSlots.forEach(function (splineSlot) {
+        if (splineSlot.dataset.splineUrl) {
+          const iframe = document.createElement('iframe');
+          iframe.src = splineSlot.dataset.splineUrl;
+          iframe.title = 'Elemento 3D Feria TEC';
+          splineSlot.innerHTML = '';
+          splineSlot.appendChild(iframe);
+        }
+      });
+
+      // 3. Contadores en tiempo real hacia el 5 de diciembre de 2026 (09:00 AM Perú) — actualiza ambos contadores
+      const targetDate = new Date('2026-12-05T09:00:00-05:00').getTime();
+      const elsDays = root.querySelectorAll('[data-cd="days"]');
+      const elsHours = root.querySelectorAll('[data-cd="hours"]');
+      const elsMinutes = root.querySelectorAll('[data-cd="minutes"]');
+      const elsSeconds = root.querySelectorAll('[data-cd="seconds"]');
+
+      function updateCountdown() {
+        const now = Date.now();
+        const diff = Math.max(0, targetDate - now);
+        const d = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+        const h = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+        const m = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
+        const s = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+
+        elsDays.forEach(function (el) { el.textContent = d; });
+        elsHours.forEach(function (el) { el.textContent = h; });
+        elsMinutes.forEach(function (el) { el.textContent = m; });
+        elsSeconds.forEach(function (el) { el.textContent = s; });
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // 4. Riel táctico de las 7 zonas en el Hero (con vista previa inferior)
+      const railButtons = root.querySelectorAll('.ft-rail-btn');
+      const previewTitle = root.querySelector('#railPreviewTitle');
+      const previewDesc = root.querySelector('#railPreviewDesc');
+
+      railButtons.forEach(function (btn) {
+        btn.addEventListener('mouseenter', function () {
+          railButtons.forEach(function (b) { b.classList.remove('is-active'); });
+          btn.classList.add('is-active');
+          if (previewTitle && btn.dataset.zoneTitle) {
+            previewTitle.textContent = btn.dataset.zoneTitle;
+          }
+          if (previewDesc && btn.dataset.zoneDesc) {
+            previewDesc.textContent = btn.dataset.zoneDesc;
+          }
+        });
+
+        btn.addEventListener('click', function () {
+          const targetSelector = btn.dataset.zoneTarget;
+          if (targetSelector) {
+            const targetEl = root.querySelector(targetSelector);
+            if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // 5. Modal de Términos y Condiciones del Sorteo (con fondo desenfocado)
+      const openTycBtn = root.querySelector('#ftOpenTycBtn');
+      const closeTycBtn = root.querySelector('#ftCloseTycBtn');
+      const tycModal = root.querySelector('#ftTycModal');
+
+      function openTycModal() {
+        if (!tycModal) return;
+        tycModal.classList.add('is-open');
+        tycModal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeTycModal() {
+        if (!tycModal) return;
+        tycModal.classList.remove('is-open');
+        tycModal.setAttribute('aria-hidden', 'true');
+      }
+
+      if (openTycBtn) {
+        openTycBtn.addEventListener('click', openTycModal);
+      }
+      if (closeTycBtn) {
+        closeTycBtn.addEventListener('click', closeTycModal);
+      }
+      if (tycModal) {
+        tycModal.addEventListener('click', function (e) {
+          if (e.target === tycModal) closeTycModal();
+        });
+      }
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && tycModal && tycModal.classList.contains('is-open')) {
+          closeTycModal();
+        }
+      });
+
+      // 6. Filtro interactivo de las 12 carreras profesionales
+      const filterBtns = root.querySelectorAll('.ft-filter-btn');
+      const careerCards = root.querySelectorAll('.ft-career-card');
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const filter = btn.dataset.filter;
+          filterBtns.forEach(function (b) { b.classList.remove('is-active'); });
+          btn.classList.add('is-active');
+
+          careerCards.forEach(function (card) {
+            if (filter === 'all' || card.dataset.category === filter) {
+              card.removeAttribute('hidden');
+            } else {
+              card.setAttribute('hidden', '');
+            }
+          });
+        });
+      });
+
+      // 7. Acordeón accesible para Preguntas Frecuentes (FAQ)
+      const faqItems = root.querySelectorAll('.ft-faq-item');
+      faqItems.forEach(function (item) {
+        const trigger = item.querySelector('.ft-faq-trigger');
+        const square = item.querySelector('.ft-faq-square');
+        if (!trigger) return;
+
+        trigger.addEventListener('click', function () {
+          const isOpen = item.classList.contains('is-open');
+
+          faqItems.forEach(function (other) {
+            other.classList.remove('is-open');
+            const otherBtn = other.querySelector('.ft-faq-trigger');
+            const otherSq = other.querySelector('.ft-faq-square');
+            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+            if (otherSq) otherSq.textContent = '+';
+          });
+
+          if (!isOpen) {
+            item.classList.add('is-open');
+            trigger.setAttribute('aria-expanded', 'true');
+            if (square) square.textContent = '−';
+          }
+        });
+      });
+
+    })();
+  </script>
+</body>
+
+</html>

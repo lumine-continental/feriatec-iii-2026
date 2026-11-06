@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Dessau Dark Folio & Zone Matrix — Feria TEC</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }
+  body {
+    width: 1440px; height: 900px; overflow: hidden;
+    background: #0A0A0A; color: #FFFFFF;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Bauhaus Constructivist Top Bar */
+  .topbar {
+    height: 64px; background: #0A0A0A; border-bottom: 1px solid #252525;
+    display: grid; grid-template-columns: 280px 1fr 240px; align-items: stretch;
+  }
+  .brand-cell {
+    display: flex; align-items: center; gap: 12px; padding: 0 28px;
+    border-right: 1px solid #252525; font-weight: 900; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .brand-mark {
+    width: 28px; height: 28px; background: #E4000B; color: #FFFFFF;
+    display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 13px;
+  }
+  .nav-cell {
+    display: flex; align-items: center; justify-content: space-between; padding: 0 32px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #A0A0A0;
+  }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links span strong { color: #E4000B; margin-right: 4px; }
+  .status-tag { color: #EAEAEA; display: flex; align-items: center; gap: 8px; }
+  .status-dot { width: 8px; height: 8px; background: #E4000B; display: inline-block; }
+  .cta-cell {
+    background: #E4000B; color: #FFFFFF; display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  /* Asymmetric Bauhaus First Viewport Matrix */
+  .hero-matrix {
+    display: grid; grid-template-columns: 76px 1fr 430px; height: 636px; border-bottom: 1px solid #252525;
+  }
+  .index-spine {
+    background: #111111; border-right: 1px solid #252525;
+    display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 24px 0;
+  }
+  .spine-num { font-size: 28px; font-weight: 900; color: #E4000B; letter-spacing: -0.04em; }
+  .spine-vert {
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    font-size: 11px; font-weight: 800; letter-spacing: 0.24em; color: #707070; text-transform: uppercase;
+  }
+  .spine-rule { width: 4px; height: 110px; background: #E4000B; }
+
+  .stage-main {
+    display: grid; grid-template-rows: 1fr 156px; background: #0A0A0A; position: relative;
+  }
+  .stage-upper {
+    display: grid; grid-template-columns: 1.15fr 0.85fr; border-bottom: 1px solid #252525;
+  }
+  .headline-block {
+    padding: 40px 44px; display: flex; flex-direction: column; justify-content: space-between;
+    border-right: 1px solid #252525; background: #0A0A0A;
+  }
+  .kicker-bar {
+    display: inline-flex; align-items: center; gap: 10px;
+    border-left: 4px solid #E4000B; padding-left: 12px;
+    font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #EAEAEA;
+  }
+  h1 {
+    font-size: 74px; font-weight: 900; line-height: 0.92; letter-spacing: -0.04em;
+    text-transform: uppercase; color: #FFFFFF; margin: 14px 0;
+  }
+  h1 .red-block {
+    background: #E4000B; color: #FFFFFF; padding: 0 10px; display: inline-block;
+  }
+  .lead-copy {
+    font-size: 15px; line-height: 1.5; color: #A0A0A0; max-width: 470px; font-weight: 500;
+  }
+  .lead-copy strong { color: #FFFFFF; }
+
+  .photo-plate {
+    position: relative; background: #111111; overflow: hidden;
+  }
+  .photo-plate img {
+    width: 100%; height: 100%; object-fit: cover; filter: contrast(1.12) brightness(0.82);
+  }
+  .photo-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(10, 10, 10, 0.92); border-top: 2px solid #E4000B;
+    padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .photo-caption span { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #EAEAEA; }
+  .photo-caption strong { font-size: 12px; font-weight: 900; color: #E4000B; }
+
+  /* Giveaway Bauhaus Banner Strip inside Hero */
+  .stage-lower {
+    display: grid; grid-template-columns: 210px 1fr 220px; background: #111111;
+  }
+  .giveaway-tag {
+    background: #1C1C1C; border-right: 1px solid #252525; padding: 22px 24px;
+    display: flex; flex-direction: column; justify-content: center;
+    border-top: 4px solid #E4000B;
+  }
+  .giveaway-tag small { font-size: 10px; font-weight: 800; letter-spacing: 0.16em; color: #E4000B; text-transform: uppercase; margin-bottom: 6px; }
+  .giveaway-tag strong { font-size: 20px; font-weight: 900; line-height: 1.05; text-transform: uppercase; }
+  .giveaway-detail {
+    padding: 22px 32px; display: flex; align-items: center; justify-content: space-between; border-right: 1px solid #252525;
+  }
+  .giveaway-detail p { font-size: 15px; line-height: 1.4; color: #EAEAEA; font-weight: 600; max-width: 390px; }
+  .giveaway-detail p span { color: #E4000B; font-weight: 900; text-transform: uppercase; }
+  .prize-badges { display: flex; gap: 10px; }
+  .prize-chip {
+    background: #1C1C1C; border: 1px solid #252525; padding: 10px 14px;
+    font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .stat-cell {
+    padding: 22px 24px; display: flex; flex-direction: column; justify-content: center; background: #0A0A0A;
+  }
+  .stat-cell .big { font-size: 38px; font-weight: 900; color: #FFFFFF; line-height: 1; letter-spacing: -0.03em; }
+  .stat-cell .big em { color: #E4000B; font-style: normal; }
+  .stat-cell small { font-size: 11px; color: #A0A0A0; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 6px; }
+
+  /* Floating Gravity Forms Monolith */
+  .form-monolith {
+    background: #1C1C1C; border-left: 1px solid #252525; padding: 28px 30px;
+    display: flex; flex-direction: column; justify-content: space-between; position: relative;
+  }
+  .form-monolith::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: #E4000B;
+  }
+  .form-head { border-bottom: 1px solid #252525; padding-bottom: 14px; }
+  .form-kicker { font-size: 11px; font-weight: 800; color: #E4000B; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 4px; }
+  .form-title { font-size: 24px; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; color: #FFFFFF; }
+  .form-sub { font-size: 12px; color: #A0A0A0; margin-top: 4px; }
+  .gf-fields { display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
+  .gf-field label { display: block; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #EAEAEA; margin-bottom: 4px; }
+  .gf-input {
+    width: 100%; height: 38px; background: #111111; border: 1px solid #252525;
+    padding: 0 12px; color: #FFFFFF; font-size: 13px; display: flex; align-items: center;
+  }
+  .gf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .gf-submit {
+    width: 100%; height: 50px; background: #E4000B; color: #FFFFFF;
+    font-weight: 900; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;
+    display: flex; align-items: center; justify-content: space-between; padding: 0 20px; border: none;
+  }
+  .gf-foot { font-size: 10px; color: #707070; text-transform: uppercase; letter-spacing: 0.08em; display: flex; justify-content: space-between; }
+
+  /* Below the fold peek: 7 Thematic Zones Asymmetric Editorial Strip */
+  .zones-peek {
+    height: 200px; background: #0A0A0A; display: grid; grid-template-columns: 320px 1fr;
+  }
+  .zones-intro {
+    padding: 24px 28px; border-right: 1px solid #252525; background: #111111;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .zones-intro .sec-num { font-size: 11px; font-weight: 800; color: #E4000B; letter-spacing: 0.16em; text-transform: uppercase; }
+  .zones-intro h2 { font-size: 26px; font-weight: 900; text-transform: uppercase; line-height: 1.05; letter-spacing: -0.02em; }
+  .zones-intro p { font-size: 12px; color: #A0A0A0; }
+  .zones-strip {
+    display: grid; grid-template-columns: 1.35fr 1fr 1fr 1.15fr;
+  }
+  .zone-block {
+    padding: 20px 22px; border-right: 1px solid #252525; background: #0A0A0A;
+    display: flex; flex-direction: column; justify-content: space-between; position: relative;
+  }
+  .zone-block.active { background: #1C1C1C; border-top: 3px solid #E4000B; }
+  .zone-num { font-size: 32px; font-weight: 900; color: #252525; line-height: 1; }
+  .zone-block.active .zone-num { color: #E4000B; }
+  .zone-title { font-size: 15px; font-weight: 900; text-transform: uppercase; color: #FFFFFF; margin-top: 8px; }
+  .zone-desc { font-size: 12px; color: #A0A0A0; line-height: 1.35; }
+  .zone-meta { font-size: 10px; font-weight: 800; color: #EAEAEA; letter-spacing: 0.1em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-cell">
+      <div class="brand-mark">IC</div>
+      <span>Instituto Continental</span>
+    </div>
+    <div class="nav-cell">
+      <div class="nav-links">
+        <span><strong>01</strong> 7 Zonas Temáticas</span>
+        <span><strong>02</strong> 11 Carreras</span>
+        <span><strong>03</strong> Experiencia</span>
+        <span><strong>04</strong> Sorteo Moto & Silla</span>
+      </div>
+      <div class="status-tag"><i class="status-dot"></i> Campus Huancayo · Ingreso Libre</div>
+    </div>
+    <div class="cta-cell">Regístrate Ahora →</div>
+  </header>
+
+  <section class="hero-matrix">
+    <aside class="index-spine">
+      <div class="spine-num">01</div>
+      <div class="spine-vert">FERIA TEC · EDICIÓN CAMPAÑA</div>
+      <div class="spine-rule"></div>
+    </aside>
+
+    <div class="stage-main">
+      <div class="stage-upper">
+        <div class="headline-block">
+          <div class="kicker-bar">7 Zonas de Experiencia · 11 Laboratorios de Carrera</div>
+          <h1>DOMINA TU<br><span class="red-block">FUTURO</span> EN<br>FERIA TEC</h1>
+          <p class="lead-copy">
+            Vive un festival tecnológico y vocacional sin precedentes. Explora <strong>7 zonas interactivas</strong>, experimenta tu carrera antes de elegirla y conecta con empresas líderes.
+          </p>
+        </div>
+        <div class="photo-plate">
+          <img src="../../../assets/campus_students_banner.png" alt="Estudiantes en Feria TEC Instituto Continental">
+          <div class="photo-caption">
+            <span>Experiencia Presencial · Campus Continental</span>
+            <strong>[07 ZONAS ACTIVAS]</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-lower">
+        <div class="giveaway-tag">
+          <small>Beneficio de Admisión</small>
+          <strong>Sorteo Exclusivo en Feria</strong>
+        </div>
+        <div class="giveaway-detail">
+          <p>“<span>Matricúlate en la feria</span> y participa del sorteo de una <strong>moto eléctrica</strong> y una <strong>silla gamer</strong>.”</p>
+          <div class="prize-badges">
+            <div class="prize-chip">01 Moto Eléctrica</div>
+            <div class="prize-chip">01 Silla Gamer</div>
+          </div>
+        </div>
+        <div class="stat-cell">
+          <div class="big">90<em>%</em></div>
+          <small>Empleabilidad Egresados</small>
+        </div>
+      </div>
+    </div>
+
+    <aside class="form-monolith">
+      <div class="form-head">
+        <div class="form-kicker">Pase Oficial de Acceso</div>
+        <div class="form-title">Asegura tu Vacante</div>
+        <div class="form-sub">Regístrate gratis para ingresar a las 7 zonas y sorteos.</div>
+      </div>
+      <div class="gf-fields">
+        <div class="gf-field">
+          <label>Nombres y Apellidos *</label>
+          <div class="gf-input">Ingresa tu nombre completo</div>
+        </div>
+        <div class="gf-row">
+          <div class="gf-field">
+            <label>DNI / Documento *</label>
+            <div class="gf-input">8 dígitos</div>
+          </div>
+          <div class="gf-field">
+            <label>Celular / WhatsApp *</label>
+            <div class="gf-input">999 999 999</div>
+          </div>
+        </div>
+        <div class="gf-field">
+          <label>Correo Electrónico *</label>
+          <div class="gf-input">correo@ejemplo.com</div>
+        </div>
+        <div class="gf-field">
+          <label>Carrera de Interés (11 Programas) *</label>
+          <div class="gf-input">Ciencia de Datos e Inteligencia Artificial ▾</div>
+        </div>
+      </div>
+      <button class="gf-submit">
+        <span>Obtener Pase Feria TEC</span>
+        <span>[ENTER ↵]</span>
+      </button>
+      <div class="gf-foot">
+        <span>[gravityform id="91" title="true"]</span>
+        <span>Cupos Limitados</span>
+      </div>
+    </aside>
+  </section>
+
+  <section class="zones-peek">
+    <div class="zones-intro">
+      <span class="sec-num">Sección 02 // Arquitectura del Evento</span>
+      <h2>Descubre las 7 Zonas Feria TEC</h2>
+      <p>Experiencias independientes de tecnología, empleabilidad, talento y entretenimiento.</p>
+    </div>
+    <div class="zones-strip">
+      <div class="zone-block active">
+        <div>
+          <div class="zone-num">Z.01</div>
+          <div class="zone-title">Zona de Admisión</div>
+        </div>
+        <div class="zone-desc">Simulacro en vivo, Portal “Postula Aquí” y sorteo de moto eléctrica + silla gamer.</div>
+        <div class="zone-meta">■ Tu siguiente paso empieza aquí</div>
+      </div>
+      <div class="zone-block">
+        <div>
+          <div class="zone-num">Z.02</div>
+          <div class="zone-title">Break & Entretenimiento</div>
+        </div>
+        <div class="zone-desc">Food trucks, música en vivo, show principal con DJ y Photobooth #FeriaTecContinental.</div>
+        <div class="zone-meta">□ Energía y comunidad</div>
+      </div>
+      <div class="zone-block">
+        <div>
+          <div class="zone-num">Z.03</div>
+          <div class="zone-title">Zona IConecta</div>
+        </div>
+        <div class="zone-desc">Networking, orientación vocacional y charlas “Mi futuro profesional” con egresados.</div>
+        <div class="zone-meta">□ Conecta con tu futuro</div>
+      </div>
+      <div class="zone-block">
+        <div>
+          <div class="zone-num">Z.04</div>
+          <div class="zone-title">¡Empléate Ya!</div>
+        </div>
+        <div class="zone-desc">Stands de Ferreyros, SUNAT, BCP y empresas aliadas con oportunidades reales.</div>
+        <div class="zone-meta">□ +24K Empresas Aliadas</div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

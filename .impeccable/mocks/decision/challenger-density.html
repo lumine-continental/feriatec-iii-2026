@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Dark Constructivist High-Density Mosaic — Feria TEC</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }
+  body {
+    width: 1440px; height: 900px; overflow: hidden;
+    background: #0A0A0A; color: #FFFFFF;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  .top-mosaic {
+    height: 48px; background: #111111; border-bottom: 1px solid #252525;
+    display: grid; grid-template-columns: 220px repeat(7, 1fr) 180px;
+    font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .top-mosaic > div {
+    border-right: 1px solid #252525; display: flex; align-items: center; justify-content: center; padding: 0 10px; color: #A0A0A0;
+  }
+  .top-mosaic .brand { background: #0A0A0A; color: #FFFFFF; font-weight: 900; justify-content: flex-start; padding-left: 20px; }
+  .top-mosaic .brand span { background: #E4000B; padding: 2px 6px; margin-right: 8px; }
+  .top-mosaic .cta { background: #E4000B; color: #FFFFFF; font-weight: 900; }
+
+  .main-grid {
+    display: grid; grid-template-columns: 540px 480px 420px; height: 612px; border-bottom: 1px solid #252525;
+  }
+  .col-left {
+    border-right: 1px solid #252525; display: grid; grid-template-rows: 1fr 190px;
+  }
+  .hero-cell { padding: 32px; display: flex; flex-direction: column; justify-content: space-between; border-bottom: 1px solid #252525; }
+  .tab-red {
+    display: inline-block; width: fit-content; background: #E4000B; color: #FFFFFF;
+    font-size: 10px; font-weight: 900; padding: 4px 10px; text-transform: uppercase; letter-spacing: 0.12em;
+  }
+  h1 { font-size: 64px; font-weight: 900; line-height: 0.92; text-transform: uppercase; letter-spacing: -0.04em; }
+  h1 span { color: #E4000B; }
+  .hero-cell p { font-size: 14px; color: #EAEAEA; line-height: 1.45; }
+  .stats-mini {
+    display: grid; grid-template-columns: repeat(4, 1fr); background: #111111;
+  }
+  .stat-box {
+    border-right: 1px solid #252525; padding: 20px 16px; display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .stat-box strong { font-size: 30px; font-weight: 900; color: #FFFFFF; }
+  .stat-box strong em { color: #E4000B; font-style: normal; }
+  .stat-box span { font-size: 10px; color: #A0A0A0; text-transform: uppercase; font-weight: 700; line-height: 1.3; }
+
+  .col-mid {
+    border-right: 1px solid #252525; display: grid; grid-template-rows: 310px 1fr;
+  }
+  .photo-cell { position: relative; overflow: hidden; border-bottom: 1px solid #252525; }
+  .photo-cell img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.15) brightness(0.85); }
+  .photo-label {
+    position: absolute; top: 14px; left: 14px; background: #0A0A0A; border: 1px solid #E4000B;
+    padding: 5px 10px; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .giveaway-mosaic {
+    background: #1C1C1C; padding: 24px; display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .giveaway-mosaic h3 { font-size: 24px; font-weight: 900; text-transform: uppercase; line-height: 1.1; }
+  .giveaway-mosaic h3 span { color: #E4000B; }
+  .prize-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .prize-mod { background: #111111; border: 1px solid #252525; border-top: 3px solid #E4000B; padding: 12px; }
+  .prize-mod strong { font-size: 13px; text-transform: uppercase; display: block; margin-bottom: 4px; }
+  .prize-mod small { font-size: 11px; color: #A0A0A0; }
+
+  .col-right {
+    background: #111111; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .mod-header { background: #E4000B; color: #FFFFFF; padding: 8px 12px; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; }
+  .form-title { font-size: 22px; font-weight: 900; text-transform: uppercase; margin-top: 10px; }
+  .fields { display: flex; flex-direction: column; gap: 9px; }
+  .field-box { background: #0A0A0A; border: 1px solid #252525; padding: 9px 12px; }
+  .field-box small { font-size: 9px; color: #707070; text-transform: uppercase; font-weight: 800; display: block; }
+  .field-box span { font-size: 12px; color: #EAEAEA; font-weight: 600; }
+  .submit-bar { height: 48px; background: #E4000B; color: #FFFFFF; font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; justify-content: center; }
+
+  /* Dense 7-Zone Directory Strip */
+  .dense-zones {
+    height: 240px; display: grid; grid-template-columns: repeat(7, 1fr); background: #0A0A0A;
+  }
+  .z-cell {
+    border-right: 1px solid #252525; padding: 16px; display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .z-head {
+    background: #1C1C1C; border-left: 3px solid #E4000B; padding: 4px 8px;
+    font-size: 10px; font-weight: 900; color: #FFFFFF; text-transform: uppercase;
+  }
+  .z-cell h4 { font-size: 14px; font-weight: 900; text-transform: uppercase; line-height: 1.15; margin-top: 8px; }
+  .z-cell ul { list-style: none; font-size: 11px; color: #A0A0A0; line-height: 1.45; }
+  .z-cell ul li::before { content: "▪ "; color: #E4000B; }
+  .z-foot { font-size: 9px; font-weight: 800; color: #707070; text-transform: uppercase; border-top: 1px solid #1C1C1C; padding-top: 8px; }
+</style>
+</head>
+<body>
+  <header class="top-mosaic">
+    <div class="brand"><span>IC</span> FERIA TEC</div>
+    <div>Z.01 Admisión</div>
+    <div>Z.02 Break & DJ</div>
+    <div>Z.03 IConecta</div>
+    <div>Z.04 Empleabilidad</div>
+    <div>Z.05 A la Moda</div>
+    <div>Z.06 Gastronomía</div>
+    <div>Z.07 Zona Verde</div>
+    <div class="cta">Registro Libre →</div>
+  </header>
+
+  <section class="main-grid">
+    <div class="col-left">
+      <div class="hero-cell">
+        <span class="tab-red">Instituto Continental · Campaña Oficial</span>
+        <h1>7 ZONAS.<br>11 CARRERAS.<br><span>UN SOLO DÍA.</span></h1>
+        <p>Explora el ecosistema completo de Feria TEC: laboratorios reales, simulacro de admisión, empresas top (Ferreyros, SUNAT, BCP), festival gastronómico y show en vivo.</p>
+      </div>
+      <div class="stats-mini">
+        <div class="stat-box"><strong>+104<em>K</em></strong><span>Profesionales y Egresados</span></div>
+        <div class="stat-box"><strong>90<em>%</em></strong><span>Empleabilidad Comprobada</span></div>
+        <div class="stat-box"><strong>+24<em>K</em></strong><span>Empresas Aliadas</span></div>
+        <div class="stat-box"><strong>+40</strong><span>Años de Trayectoria</span></div>
+      </div>
+    </div>
+
+    <div class="col-mid">
+      <div class="photo-cell">
+        <img src="../../../assets/campus_students_banner.png" alt="Campus Continental">
+        <div class="photo-label">VISTA DE CAMPAÑA // CAMPUS CONTINENTAL</div>
+      </div>
+      <div class="giveaway-mosaic">
+        <div>
+          <span class="tab-red">Sorteo Exclusivo de Matrícula</span>
+          <h3 style="margin-top:8px;">Matricúlate en la feria y gana una <span>Moto Eléctrica</span> o una <span>Silla Gamer</span></h3>
+        </div>
+        <div class="prize-row">
+          <div class="prize-mod"><strong>01. Moto Eléctrica</strong><small>Movilidad urbana sostenible para tu vida estudiantil.</small></div>
+          <div class="prize-mod"><strong>02. Silla Gamer Pro</strong><small>Ergonomía de alto rendimiento para tus proyectos.</small></div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="col-right">
+      <div>
+        <div class="mod-header">Formulario Oficial · [gravityform id="91"]</div>
+        <div class="form-title">Acredítate en Feria TEC</div>
+      </div>
+      <div class="fields">
+        <div class="field-box"><small>Nombres y Apellidos *</small><span>Ingresa tus datos completos</span></div>
+        <div class="field-box"><small>DNI y Celular WhatsApp *</small><span>8 dígitos / 9 dígitos</span></div>
+        <div class="field-box"><small>Correo Electrónico *</small><span>postulante@continental.edu.pe</span></div>
+        <div class="field-box"><small>Programa Académico (11 Carreras) *</small><span>Ciencia de Datos e Inteligencia Artificial ▾</span></div>
+      </div>
+      <div class="submit-bar">Generar Pase de Acceso →</div>
+    </aside>
+  </section>
+
+  <section class="dense-zones">
+    <div class="z-cell"><div class="z-head">ZONA 01</div><h4>Admisión</h4><ul><li>Simulacro en vivo</li><li>Portal Postula Aquí</li><li>Sorteo Moto & Silla</li></ul><div class="z-foot">Tu próximo paso</div></div>
+    <div class="z-cell"><div class="z-head">ZONA 02</div><h4>Break & Show</h4><ul><li>Zona relax juvenil</li><li>Food trucks y música</li><li>Show DJ + Photobooth</li></ul><div class="z-foot">Vive la experiencia</div></div>
+    <div class="z-cell"><div class="z-head">ZONA 03</div><h4>IConecta</h4><ul><li>Espacio networking</li><li>Orientación vocacional</li><li>Charlas con egresados</li></ul><div class="z-foot">Conecta con tu futuro</div></div>
+    <div class="z-cell"><div class="z-head">ZONA 04</div><h4>¡Empléate Ya!</h4><ul><li>Stands Ferreyros, BCP</li><li>SUNAT y aliados</li><li>Prácticas y empleo</li></ul><div class="z-foot">Oportunidad real</div></div>
+    <div class="z-cell"><div class="z-head">ZONA 05</div><h4>A la Moda</h4><ul><li>Peinados y styling</li><li>Maquillaje rápido</li><li>Diseño y Comunicación</li></ul><div class="z-foot">Crea tu estilo</div></div>
+    <div class="z-cell"><div class="z-head">ZONA 06</div><h4>Gastronomía</h4><ul><li>Exhibición culinaria</li><li>Productos de alumnos</li><li>Socios locales</li></ul><div class="z-foot">Talento local</div></div>
+    <div class="z-cell"><div class="z-head">ZONA 07</div><h4>Zona Verde</h4><ul><li>Sostenibilidad</li><li>Reciclaje activo</li><li>Dinámicas ecológicas</li></ul><div class="z-foot">Mejor futuro</div></div>
+  </section>
+</body>
+</html>

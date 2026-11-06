@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Bauhaus Tactical Game Launcher — Feria TEC</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }
+  body {
+    width: 1440px; height: 900px; overflow: hidden;
+    background: #0A0A0A; color: #FFFFFF;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .launcher-shell {
+    display: grid; grid-template-columns: 250px 1fr 420px; height: 700px;
+    border-bottom: 2px solid #252525;
+  }
+  /* Left Tactical Command Column */
+  .command-rail {
+    background: #111111; border-right: 1px solid #252525;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .brand-header {
+    padding: 24px; border-bottom: 1px solid #252525; background: #0A0A0A;
+  }
+  .brand-tag { font-size: 10px; font-weight: 800; letter-spacing: 0.2em; color: #E4000B; text-transform: uppercase; }
+  .brand-name { font-size: 18px; font-weight: 900; text-transform: uppercase; margin-top: 4px; letter-spacing: -0.02em; }
+  .zone-selector { display: flex; flex-direction: column; }
+  .zone-tab {
+    padding: 15px 24px; border-bottom: 1px solid #1C1C1C;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12px; font-weight: 700; text-transform: uppercase; color: #A0A0A0;
+  }
+  .zone-tab.active {
+    background: #1C1C1C; color: #FFFFFF; border-left: 4px solid #E4000B;
+  }
+  .zone-tab strong { color: #E4000B; font-size: 11px; letter-spacing: 0.1em; }
+  .rail-footer {
+    padding: 20px 24px; background: #1C1C1C; border-top: 1px solid #252525;
+  }
+  .rail-footer small { font-size: 10px; color: #707070; text-transform: uppercase; letter-spacing: 0.12em; display: block; }
+  .rail-footer strong { font-size: 14px; color: #EAEAEA; text-transform: uppercase; }
+
+  /* Center Dramatic Stage */
+  .center-stage {
+    position: relative; background: #0A0A0A; display: flex; flex-direction: column; justify-content: space-between;
+    padding: 40px 48px; overflow: hidden;
+  }
+  .stage-bg {
+    position: absolute; inset: 0; z-index: 0;
+  }
+  .stage-bg img {
+    width: 100%; height: 100%; object-fit: cover; opacity: 0.34; filter: contrast(1.2) grayscale(0.25);
+  }
+  .stage-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, #0A0A0A 0%, rgba(10,10,10,0.82) 60%, rgba(10,10,10,0.45) 100%),
+                linear-gradient(0deg, #0A0A0A 0%, transparent 50%);
+    z-index: 1;
+  }
+  .stage-top, .stage-bottom { position: relative; z-index: 2; }
+  .stage-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .campaign-badge {
+    background: #E4000B; color: #FFFFFF; padding: 8px 16px;
+    font-size: 11px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase;
+  }
+  .stage-coords {
+    background: #111111; border: 1px solid #252525; padding: 8px 14px;
+    font-size: 11px; font-weight: 800; color: #A0A0A0; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .stage-Title {
+    font-size: 84px; font-weight: 900; line-height: 0.88; letter-spacing: -0.04em;
+    text-transform: uppercase; margin-bottom: 18px;
+  }
+  .stage-Title span { color: #E4000B; }
+  .stage-desc {
+    font-size: 16px; line-height: 1.5; color: #EAEAEA; max-width: 540px; margin-bottom: 28px;
+    border-left: 3px solid #E4000B; padding-left: 16px;
+  }
+  .reward-callout {
+    background: #111111; border: 1px solid #252525; border-left: 6px solid #E4000B;
+    padding: 18px 24px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .reward-callout div small { font-size: 10px; font-weight: 800; color: #E4000B; letter-spacing: 0.15em; text-transform: uppercase; display: block; }
+  .reward-callout div strong { font-size: 16px; font-weight: 900; color: #FFFFFF; text-transform: uppercase; }
+  .reward-tag { background: #252525; padding: 8px 14px; font-size: 11px; font-weight: 900; text-transform: uppercase; }
+
+  /* Right Registration Dock */
+  .reg-dock {
+    background: #111111; border-left: 1px solid #252525; padding: 32px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .dock-header { border-bottom: 2px solid #E4000B; padding-bottom: 16px; }
+  .dock-header small { font-size: 11px; font-weight: 800; color: #E4000B; letter-spacing: 0.15em; text-transform: uppercase; }
+  .dock-header h2 { font-size: 26px; font-weight: 900; text-transform: uppercase; margin-top: 4px; }
+  .dock-form { display: flex; flex-direction: column; gap: 12px; }
+  .dock-field label { font-size: 10px; font-weight: 800; color: #A0A0A0; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 5px; }
+  .dock-input { height: 40px; background: #1C1C1C; border: 1px solid #252525; padding: 0 14px; color: #FFFFFF; font-size: 13px; display: flex; align-items: center; }
+  .dock-btn {
+    height: 54px; background: #E4000B; color: #FFFFFF; font-size: 15px; font-weight: 900;
+    text-transform: uppercase; letter-spacing: 0.12em; display: flex; align-items: center; justify-content: center;
+  }
+  .dock-meta { font-size: 11px; color: #707070; display: flex; justify-content: space-between; }
+
+  /* Bottom Career & Zone Strip */
+  .bottom-deck {
+    height: 200px; background: #0A0A0A; display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .deck-card {
+    border-right: 1px solid #252525; padding: 24px 28px; display: flex; flex-direction: column; justify-content: space-between;
+    background: #0A0A0A;
+  }
+  .deck-card.highlight { background: #1C1C1C; }
+  .deck-top { display: flex; justify-content: space-between; align-items: center; }
+  .deck-top span { font-size: 11px; font-weight: 900; color: #E4000B; letter-spacing: 0.14em; text-transform: uppercase; }
+  .deck-top strong { font-size: 24px; font-weight: 900; color: #252525; }
+  .deck-card h3 { font-size: 18px; font-weight: 900; text-transform: uppercase; }
+  .deck-card p { font-size: 12px; color: #A0A0A0; line-height: 1.4; }
+</style>
+</head>
+<body>
+  <div class="launcher-shell">
+    <aside class="command-rail">
+      <div>
+        <div class="brand-header">
+          <div class="brand-tag">Instituto Continental</div>
+          <div class="brand-name">FERIA TEC // HUB</div>
+        </div>
+        <div class="zone-selector">
+          <div class="zone-tab active"><span>Zona Admisión</span><strong>Z.01</strong></div>
+          <div class="zone-tab"><span>Break & DJ Show</span><strong>Z.02</strong></div>
+          <div class="zone-tab"><span>Zona IConecta</span><strong>Z.03</strong></div>
+          <div class="zone-tab"><span>¡Empléate Ya!</span><strong>Z.04</strong></div>
+          <div class="zone-tab"><span>Zona A la Moda</span><strong>Z.05</strong></div>
+          <div class="zone-tab"><span>Festival Gastronómico</span><strong>Z.06</strong></div>
+          <div class="zone-tab"><span>Zona Verde</span><strong>Z.07</strong></div>
+        </div>
+      </div>
+      <div class="rail-footer">
+        <small>11 Espacios de Carrera</small>
+        <strong>Modo Presencial Activo</strong>
+      </div>
+    </aside>
+
+    <main class="center-stage">
+      <div class="stage-bg">
+        <img src="../../../assets/campus_students_banner.png" alt="Feria TEC">
+      </div>
+      <div class="stage-overlay"></div>
+
+      <div class="stage-top">
+        <div class="campaign-badge">Evento Oficial · Ingreso Gratuito</div>
+        <div class="stage-coords">7 ZONAS // 11 CARRERAS // +24K EMPRESAS ALIADAS</div>
+      </div>
+
+      <div class="stage-bottom">
+        <h1 class="stage-Title">VIVE LA<br>EXPERIENCIA<br><span>FERIA TEC</span></h1>
+        <p class="stage-desc">
+          Explora 7 zonas temáticas independientes, pon a prueba laboratorios reales en 11 carreras profesionales y conecta con líderes de la industria.
+        </p>
+        <div class="reward-callout">
+          <div>
+            <small>Incentivo Exclusivo Zona 01 Admisión</small>
+            <strong>Matricúlate en la feria y participa del sorteo de una Moto Eléctrica y una Silla Gamer</strong>
+          </div>
+          <span class="reward-tag">2 Grandes Premios</span>
+        </div>
+      </div>
+    </main>
+
+    <aside class="reg-dock">
+      <div class="dock-header">
+        <small>Registro Oficial [Gravity Forms #91]</small>
+        <h2>Inscríbete Ahora</h2>
+      </div>
+      <div class="dock-form">
+        <div class="dock-field">
+          <label>Nombres y Apellidos *</label>
+          <div class="dock-input">Escribe tus datos completos</div>
+        </div>
+        <div class="dock-field">
+          <label>DNI / Celular WhatsApp *</label>
+          <div class="dock-input">Documento y teléfono de contacto</div>
+        </div>
+        <div class="dock-field">
+          <label>Correo Electrónico *</label>
+          <div class="dock-input">estudiante@correo.com</div>
+        </div>
+        <div class="dock-field">
+          <label>Elige tu Carrera a Experimentar *</label>
+          <div class="dock-input">Desarrollo de Sistemas de Información ▾</div>
+        </div>
+      </div>
+      <div class="dock-btn">Confirmar Registro Gratis →</div>
+      <div class="dock-meta">
+        <span>[gravityform id="91" title="true"]</span>
+        <span>100% Gratuito</span>
+      </div>
+    </aside>
+  </div>
+
+  <section class="bottom-deck">
+    <div class="deck-card highlight">
+      <div class="deck-top"><span>Zona 01</span><strong>01</strong></div>
+      <h3>Admisión + Sorteo</h3>
+      <p>Simulacro en vivo, portal “Postula Aquí” con tablets/laptops y beneficio exclusivo de matrícula.</p>
+    </div>
+    <div class="deck-card">
+      <div class="deck-top"><span>Zona 04</span><strong>04</strong></div>
+      <h3>Empleabilidad: Ferreyros, SUNAT, BCP</h3>
+      <p>Stands de empresas aliadas, prácticas profesionales y desarrollo de carrera desde estudiante.</p>
+    </div>
+    <div class="deck-card">
+      <div class="deck-top"><span>Zona 06</span><strong>06</strong></div>
+      <h3>Festival Gastronómico & DJ</h3>
+      <p>Exhibiciones culinarias, food trucks, música en vivo, estilismo en Zona A la Moda y Zona Verde.</p>
+    </div>
+    <div class="deck-card">
+      <div class="deck-top"><span>11 Programas</span><strong>11</strong></div>
+      <h3>Descubre tu Futura Carrera</h3>
+      <p>Ciencia de Datos e IA, Diseño Gráfico, Enfermería, Farmacia, Marketing, Administración y más.</p>
+    </div>
+  </section>
+</body>
+</html>

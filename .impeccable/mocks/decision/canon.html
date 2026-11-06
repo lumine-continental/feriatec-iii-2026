@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Landing Educativa Oscura Estándar — Feria TEC</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }
+  body {
+    width: 1440px; height: 900px; overflow: hidden;
+    background: #111111; color: #FFFFFF;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .nav {
+    height: 70px; background: #0A0A0A; border-bottom: 1px solid #252525;
+    display: flex; align-items: center; justify-content: space-between; padding: 0 80px;
+  }
+  .nav strong { font-size: 18px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .nav-links { display: flex; gap: 32px; font-size: 13px; color: #A0A0A0; }
+  .nav-btn { background: #E4000B; color: #FFFFFF; padding: 10px 20px; font-size: 13px; font-weight: 800; text-transform: uppercase; }
+  .hero {
+    display: grid; grid-template-columns: 1fr 440px; gap: 60px; padding: 56px 80px;
+    background: #111111; border-bottom: 1px solid #252525; height: 580px; align-items: center;
+  }
+  .badge { display: inline-block; background: #E4000B; padding: 6px 12px; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 16px; }
+  h1 { font-size: 56px; font-weight: 900; line-height: 1.05; text-transform: uppercase; margin-bottom: 16px; }
+  p.lead { font-size: 16px; color: #A0A0A0; line-height: 1.5; margin-bottom: 24px; }
+  .promo-box { background: #1C1C1C; border-left: 4px solid #E4000B; padding: 16px 20px; font-size: 14px; color: #EAEAEA; }
+  .form-card { background: #1C1C1C; border: 1px solid #252525; padding: 28px; display: flex; flex-direction: column; gap: 12px; }
+  .form-card h3 { font-size: 22px; text-transform: uppercase; }
+  .input { height: 40px; background: #111111; border: 1px solid #252525; padding: 0 12px; display: flex; align-items: center; font-size: 13px; color: #A0A0A0; }
+  .btn { height: 48px; background: #E4000B; color: #FFFFFF; font-weight: 800; display: flex; align-items: center; justify-content: center; text-transform: uppercase; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 32px 80px; background: #0A0A0A; height: 250px; }
+  .card { background: #1C1C1C; border: 1px solid #252525; padding: 24px; }
+  .card h4 { font-size: 16px; text-transform: uppercase; margin-bottom: 8px; color: #FFFFFF; }
+  .card p { font-size: 13px; color: #A0A0A0; line-height: 1.4; }
+</style>
+</head>
+<body>
+  <header class="nav">
+    <strong>Instituto Continental · Feria TEC</strong>
+    <div class="nav-links"><span>Zonas</span><span>Carreras</span><span>Sorteo</span><span>FAQ</span></div>
+    <span class="nav-btn">Regístrate</span>
+  </header>
+  <section class="hero">
+    <div>
+      <span class="badge">Evento Presencial Gratuito</span>
+      <h1>Descubre tu vocación en Feria TEC</h1>
+      <p class="lead">Participa en nuestras 7 zonas temáticas y conoce nuestros 11 programas profesionales en el campus de Instituto Continental.</p>
+      <div class="promo-box"><strong>Sorteo exclusivo:</strong> Matricúlate en la feria y participa del sorteo de una moto eléctrica y una silla gamer.</div>
+    </div>
+    <div class="form-card">
+      <h3>Inscríbete Gratis</h3>
+      <div class="input">Nombres y Apellidos *</div>
+      <div class="input">DNI y Celular *</div>
+      <div class="input">Correo Electrónico *</div>
+      <div class="input">Carrera de Interés *</div>
+      <div class="btn">Enviar Registro</div>
+    </div>
+  </section>
+  <section class="grid-3">
+    <div class="card"><h4>Zona 01: Admisión</h4><p>Simulacro de admisión en vivo y portal Postula Aquí con beneficios exclusivos.</p></div>
+    <div class="card"><h4>Zona 02: Entretenimiento</h4><p>Área de relax, food trucks, música en vivo con DJ y photobooth institucional.</p></div>
+    <div class="card"><h4>Zona 03: IConecta</h4><p>Networking, orientación vocacional y charlas con docentes y egresados.</p></div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Monochrome Cutting-Rail Stage Strip — Feria TEC</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }
+  body {
+    width: 1440px; height: 900px; overflow: hidden;
+    background: #0A0A0A; color: #FFFFFF;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  /* Perforated Select Rail across top */
+  .select-rail {
+    height: 76px; background: #0A0A0A; border-bottom: 2px solid #E4000B;
+    display: grid; grid-template-columns: 260px repeat(7, 1fr);
+  }
+  .rail-brand {
+    background: #111111; border-right: 1px solid #252525; padding: 0 24px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .rail-brand small { font-size: 10px; font-weight: 800; color: #E4000B; letter-spacing: 0.18em; text-transform: uppercase; }
+  .rail-brand strong { font-size: 18px; font-weight: 900; text-transform: uppercase; }
+  .rail-frame {
+    border-right: 1px solid #252525; padding: 10px 14px;
+    display: flex; flex-direction: column; justify-content: space-between; position: relative;
+  }
+  .rail-frame.flagged { background: #1C1C1C; }
+  .rail-frame.flagged::after {
+    content: "ACTIVO"; position: absolute; top: 0; right: 0;
+    background: #E4000B; color: #FFFFFF; font-size: 9px; font-weight: 900; padding: 2px 6px;
+  }
+  .frame-code { font-size: 10px; font-weight: 800; color: #707070; letter-spacing: 0.12em; }
+  .frame-name { font-size: 12px; font-weight: 800; text-transform: uppercase; color: #EAEAEA; }
+
+  /* Main Punched Window Stage */
+  .bench-stage {
+    display: grid; grid-template-columns: 1fr 430px; height: 614px; border-bottom: 1px solid #252525;
+  }
+  .bench-left {
+    padding: 36px 44px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: stretch;
+  }
+  .copy-column { display: flex; flex-direction: column; justify-content: space-between; }
+  .splice-tag {
+    display: inline-block; width: fit-content; background: #E4000B; color: #FFFFFF;
+    font-size: 11px; font-weight: 900; padding: 6px 14px; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  h1 {
+    font-size: 72px; font-weight: 900; line-height: 0.9; text-transform: uppercase; letter-spacing: -0.04em;
+  }
+  h1 span { color: #E4000B; }
+  .copy-column p { font-size: 15px; line-height: 1.5; color: #A0A0A0; }
+  .splice-callout {
+    background: #111111; border: 1px solid #252525; border-left: 5px solid #E4000B; padding: 18px 20px;
+  }
+  .splice-callout small { font-size: 10px; font-weight: 900; color: #E4000B; text-transform: uppercase; letter-spacing: 0.14em; display: block; margin-bottom: 4px; }
+  .splice-callout strong { font-size: 15px; color: #FFFFFF; text-transform: uppercase; line-height: 1.3; }
+
+  /* Punched White-Bordered Window */
+  .punched-window {
+    background: #FFFFFF; padding: 10px; display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .punched-window img { width: 100%; height: 440px; object-fit: cover; filter: contrast(1.1); }
+  .window-bar {
+    background: #0A0A0A; color: #FFFFFF; padding: 14px 16px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .window-bar span { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
+  .window-bar strong { color: #E4000B; font-size: 12px; font-weight: 900; }
+
+  .bench-form {
+    background: #111111; border-left: 1px solid #252525; padding: 32px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .bench-form h2 { font-size: 26px; font-weight: 900; text-transform: uppercase; border-left: 4px solid #E4000B; padding-left: 12px; }
+  .input-stack { display: flex; flex-direction: column; gap: 12px; }
+  .in-row { background: #1C1C1C; border: 1px solid #252525; padding: 12px 14px; font-size: 13px; color: #EAEAEA; }
+  .btn-cta { height: 52px; background: #E4000B; color: #FFFFFF; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: 0.12em; display: flex; align-items: center; justify-content: center; }
+
+  /* Hanging Trim Frames Below */
+  .hanging-bin {
+    height: 210px; background: #111111; display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .trim-card {
+    border-right: 1px solid #252525; padding: 22px 26px; display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .pin-mark { width: 100%; height: 3px; background: #252525; position: relative; }
+  .pin-mark.red { background: #E4000B; }
+  .trim-card h3 { font-size: 17px; font-weight: 900; text-transform: uppercase; }
+  .trim-card p { font-size: 12px; color: #A0A0A0; line-height: 1.4; }
+</style>
+</head>
+<body>
+  <header class="select-rail">
+    <div class="rail-brand">
+      <small>Instituto Continental</small>
+      <strong>FERIA TEC // RIEL</strong>
+    </div>
+    <div class="rail-frame flagged"><span class="frame-code">ZONA 01</span><span class="frame-name">Admisión & Sorteo</span></div>
+    <div class="rail-frame"><span class="frame-code">ZONA 02</span><span class="frame-name">Break & Show DJ</span></div>
+    <div class="rail-frame"><span class="frame-code">ZONA 03</span><span class="frame-name">IConecta</span></div>
+    <div class="rail-frame"><span class="frame-code">ZONA 04</span><span class="frame-name">¡Empléate Ya!</span></div>
+    <div class="rail-frame"><span class="frame-code">ZONA 05</span><span class="frame-name">A la Moda</span></div>
+    <div class="rail-frame"><span class="frame-code">ZONA 06</span><span class="frame-name">Gastronomía</span></div>
+    <div class="rail-frame"><span class="frame-code">ZONA 07</span><span class="frame-name">Zona Verde</span></div>
+  </header>
+
+  <section class="bench-stage">
+    <div class="bench-left">
+      <div class="copy-column">
+        <span class="splice-tag">Experiencia Inmersiva · 7 Zonas + 11 Carreras</span>
+        <h1>EXPLORA TU<br>FUTURO EN<br><span>FERIA TEC</span></h1>
+        <p>Recorre las 7 zonas temáticas y experimenta las 11 carreras profesionales con tecnología real, empleabilidad directa y entretenimiento en vivo.</p>
+        <div class="splice-callout">
+          <small>Beneficio Exclusivo de Matrícula</small>
+          <strong>“Matricúlate en la feria y participa del sorteo de una moto eléctrica y una silla gamer”</strong>
+        </div>
+      </div>
+      <div class="punched-window">
+        <img src="../../../assets/campus_students_banner.png" alt="Estudiantes en Feria TEC">
+        <div class="window-bar">
+          <span>Fotograma 01 // Campus En Vivo</span>
+          <strong>[11 CARRERAS]</strong>
+        </div>
+      </div>
+    </div>
+
+    <aside class="bench-form">
+      <div>
+        <small style="color:#E4000B; font-size:11px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase;">Pase de Entrada</small>
+        <h2 style="margin-top:6px;">Registro Oficial</h2>
+      </div>
+      <div class="input-stack">
+        <div class="in-row">Nombres y Apellidos *</div>
+        <div class="in-row">DNI / Documento de Identidad *</div>
+        <div class="in-row">Celular WhatsApp *</div>
+        <div class="in-row">Correo Electrónico *</div>
+        <div class="in-row">Carrera Profesional de Interés (11) ▾</div>
+      </div>
+      <div class="btn-cta">Confirmar Asistencia →</div>
+      <small style="color:#707070; font-size:10px;">[gravityform id="91" title="true"]</small>
+    </aside>
+  </section>
+
+  <section class="hanging-bin">
+    <div class="trim-card"><div class="pin-mark red"></div><h3>Z.01 Admisión en Vivo</h3><p>Simulacro de admisión, portal Postula Aquí con tablets y laptops, y acceso al sorteo exclusivo.</p></div>
+    <div class="trim-card"><div class="pin-mark"></div><h3>Z.04 Empleabilidad Real</h3><p>Conecta con stands de Ferreyros, SUNAT, BCP y empresas aliadas para prácticas y empleo.</p></div>
+    <div class="trim-card"><div class="pin-mark"></div><h3>11 Espacios de Carrera</h3><p>Ciencia de Datos e IA, Desarrollo de Sistemas, Diseño Gráfico, Enfermería, Farmacia y Negocios.</p></div>
+    <div class="trim-card"><div class="pin-mark"></div><h3>Festival, Moda & Verde</h3><p>Gastronomía estudiantil, DJ y food trucks, estilismo en vivo e iniciativas sostenibles.</p></div>
+  </section>
+</body>
+</html>

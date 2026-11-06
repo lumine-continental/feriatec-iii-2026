@@ -1,0 +1,265 @@
+{
+  "title": "Elige la dirección visual — Feria TEC | Instituto Continental",
+  "question": "El sorteo asignó Dessau Dark Folio & Zone Matrix (Bauhaus Oscuro × Gaming Contemporáneo × Diseño Editorial). Mantén la dirección asignada, elige una alternativa o vuelve a sortear.",
+  "options": [
+    {
+      "id": "assigned",
+      "kind": "assigned",
+      "label": "Dessau Dark Folio & Zone Matrix",
+      "kicker": "THE ROLL",
+      "lineage": "Catálogos de exposición Bauhaus (Moholy-Nagy / Bayer) × Mapas tácticos de videojuegos contemporáneos",
+      "thesis": "Estructura el campus de Feria TEC como un manifiesto arquitectónico oscuro de 90° donde las 7 zonas y 11 carreras operan como bloques asimétricos de alto contraste.",
+      "palette": [
+        "#0A0A0A",
+        "#111111",
+        "#1C1C1C",
+        "#252525",
+        "#FFFFFF",
+        "#E4000B"
+      ],
+      "materials": [
+        "planos arquitectónicos #0A0A0A y #1C1C1C",
+        "vigas constructivistas #E4000B de 4px",
+        "retícula expuesta de 1px #252525",
+        "numeración monumental 01–07"
+      ],
+      "viewport": "Composición asimétrica con titular monumental blanco/rojo a la izquierda, lámina fotográfica dramática al centro y monolito flotante de registro Gravity Forms a la derecha.",
+      "risk": "Exige precisión absoluta en el ritmo tipográfico y fotográfico para que el rigor geométrico Bauhaus se sienta vibrante y juvenil.",
+      "raised": [
+        {
+          "from": "challenger-onebit",
+          "raise": "Contraste tonal binario puro y estados activos que invierten limpiamente entre #0A0A0A, #FFFFFF y #E4000B sin sombras difusas."
+        },
+        {
+          "from": "challenger-matchbook",
+          "raise": "Cada una de las 7 zonas se diseña como un bloque autónomo con proporción, identidad gráfica y banda de encabezado propias."
+        },
+        {
+          "from": "challenger-brine",
+          "raise": "El color natural vive exclusivamente dentro de la fotografía auténtica (Gastronomía, Zona Verde, Moda) sobre una interfaz 100% monocromática."
+        },
+        {
+          "from": "challenger-orizuru",
+          "raise": "Índices numéricos monumentales en los márgenes y transiciones geométricas discretas de 90 grados en el acordeón FAQ."
+        }
+      ],
+      "html": ".impeccable/mocks/decision/assigned.html",
+      "comp": ".impeccable/mocks/decision/assigned.png"
+    },
+    {
+      "id": "model-pick",
+      "kind": "pick",
+      "label": "Bauhaus Tactical Game Launcher",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "Interfaces editoriales de lanzadores AAA (Control / Valorant) × Tipografía constructivista de Weimar",
+      "thesis": "Presenta la Feria TEC como el lobby editorial de un gran lanzamiento digital donde registrarse desbloquea las 7 zonas temáticas y el sorteo de la moto eléctrica.",
+      "palette": [
+        "#0A0A0A",
+        "#111111",
+        "#1C1C1C",
+        "#FFFFFF",
+        "#EAEAEA",
+        "#E4000B"
+      ],
+      "materials": [
+        "superficies mate #111111",
+        "selectores de estado #E4000B",
+        "tipografía display condensada en bloque",
+        "cortes ortogonales a 90°"
+      ],
+      "viewport": "Pantalla de apertura tipo launcher de campaña con columna de comando izquierda, escenario fotográfico oscuro central y consola flotante de inscripción a la derecha.",
+      "risk": "Es la síntesis más directa del brief Dark Bauhaus × Gaming: sumamente efectiva y magnética, aunque más cercana a lo que se espera del cruce de ambos mundos.",
+      "html": ".impeccable/mocks/decision/model-pick.html",
+      "comp": ".impeccable/mocks/decision/model-pick.png"
+    },
+    {
+      "id": "challenger-density",
+      "kind": "challenger",
+      "catalogId": "japanese-high-density-web",
+      "label": "Dark Constructivist High-Density Mosaic",
+      "verdict": "competitive",
+      "lineage": "Mosaicos modulares japoneses de alta densidad traducidos a negro #0A0A0A, blanco y rojo #E4000B",
+      "thesis": "Empaqueta las 7 zonas, las 11 carreras, las empresas aliadas (Ferreyros, SUNAT, BCP) y el sorteo en un mosaico arquitectónico sin desperdicio de espacio.",
+      "palette": [
+        "#0A0A0A",
+        "#111111",
+        "#1C1C1C",
+        "#252525",
+        "#FFFFFF",
+        "#E4000B"
+      ],
+      "materials": [
+        "mosaico denso de módulos con bordes de 1px",
+        "pestañas superiores en rojo utilidad #E4000B",
+        "fichas técnicas compactas"
+      ],
+      "viewport": "Retícula de alta densidad desde el primer viewport: titular impactante, pestañas rojas de zonas activas, vista previa del sorteo y formulario de registro encastrado.",
+      "case": "Gana en claridad de producto al permitir escanear de un vistazo toda la magnitud de actividades y beneficios de la feria.",
+      "risk": "Si la densidad se lleva al extremo, puede reducir el aire editorial y el dramatismo cinematográfico.",
+      "html": ".impeccable/mocks/decision/challenger-density.html",
+      "comp": ".impeccable/mocks/decision/challenger-density.png",
+      "hero": "https://impeccable.style/worlds/cards/japanese-high-density-web-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/japanese-high-density-web.webp"
+    },
+    {
+      "id": "challenger-rail",
+      "kind": "challenger",
+      "catalogId": "operate-a-cutting-bench-select-rail",
+      "label": "Monochrome Cutting-Rail Stage Strip",
+      "verdict": "competitive",
+      "lineage": "Mesa de montaje cinematográfico sobre negro absoluto adaptada a acentos #E4000B",
+      "thesis": "Atraviesa la página con un riel estructural negro y rojo donde cada zona temática y carrera se abre como un fotograma rectangular iluminado.",
+      "palette": [
+        "#0A0A0A",
+        "#111111",
+        "#1C1C1C",
+        "#FFFFFF",
+        "#A0A0A0",
+        "#E4000B"
+      ],
+      "materials": [
+        "riel horizontal indexado",
+        "ventanas fotográficas rectangulares",
+        "marcadores de corte en rojo #E4000B"
+      ],
+      "viewport": "Banda maestra superior con coordenadas de las 7 zonas sobre negro #0A0A0A, gran fotograma central de campaña y bloque de registro lateral.",
+      "case": "Gana en atmósfera cinematográfica para el video promocional y la galería de zonas, aunque exige adaptar el riel para no sugerir un itinerario secuencial.",
+      "risk": "El lenguaje de fotogramas de cine puede competir con la geometría Bauhaus pura si domina toda la interfaz.",
+      "html": ".impeccable/mocks/decision/challenger-rail.html",
+      "comp": ".impeccable/mocks/decision/challenger-rail.png",
+      "hero": "https://impeccable.style/worlds/cards/operate-a-cutting-bench-select-rail-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/operate-a-cutting-bench-select-rail.webp"
+    },
+    {
+      "id": "challenger-onebit",
+      "kind": "challenger",
+      "catalogId": "medium-native-one-bit-desktop",
+      "label": "One-Bit Dithered Desktop",
+      "verdict": "declined",
+      "lineage": "Escritorios monocromáticos de 1 bit con tramas dither y tipografía pixelada",
+      "thesis": "Construye la página como ventanas superpuestas de 1 bit en blanco y negro.",
+      "palette": [
+        "#0A0A0A",
+        "#FFFFFF",
+        "#707070",
+        "#E4000B"
+      ],
+      "materials": [
+        "tramas de puntos dither",
+        "marcos de ventana de 1px"
+      ],
+      "viewport": "Ventanas rectangulares superpuestas con barras de título en contraste extremo.",
+      "case": "Pierde en ambos ejes: el brief prohíbe expresamente pixel art, tipografía pixelada y estética retro-computacional.",
+      "risk": "Viola la restricción explícita contra pixel art y estética retro.",
+      "kept": "Inversión limpia de estados activos en alto contraste blanco/negro/rojo sin sombras difusas.",
+      "hero": "https://impeccable.style/worlds/cards/medium-native-one-bit-desktop-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/medium-native-one-bit-desktop.webp"
+    },
+    {
+      "id": "challenger-matchbook",
+      "kind": "challenger",
+      "catalogId": "vernacular-ephemera-matchbook-drawer",
+      "label": "Nightclub Matchbook Ephemera",
+      "verdict": "declined",
+      "lineage": "Colección de cajas de cerillas nocturnas con tipografía caligráfica dorada",
+      "thesis": "Presenta cada zona de la feria como una cubierta coleccionable desplegable.",
+      "palette": [
+        "#0A0A0A",
+        "#1C1C1C",
+        "#E4000B",
+        "#EAEAEA"
+      ],
+      "materials": [
+        "cubiertas plegables",
+        "bandas de fricción en el borde"
+      ],
+      "viewport": "Mosaico de cubiertas coleccionables que se abren al interactuar.",
+      "case": "Pierde en ambos ejes: la nostalgia vintage de clubes nocturnos contradice una campaña tecnológica de educación superior.",
+      "risk": "Descontextualiza por completo la identidad académica y tecnológica de Instituto Continental.",
+      "kept": "Tratar cada una de las 7 zonas como una pieza gráfica con proporción y composición propias en lugar de tarjetas clónicas.",
+      "hero": "https://impeccable.style/worlds/cards/vernacular-ephemera-matchbook-drawer-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/vernacular-ephemera-matchbook-drawer.webp"
+    },
+    {
+      "id": "challenger-brine",
+      "kind": "challenger",
+      "catalogId": "food-fermentation-culinary-theater-pickling-brine-calendar",
+      "label": "Seasonal Brine Shelf",
+      "verdict": "declined",
+      "lineage": "Calendario culinario de frascos de fermentación y etiquetas manuales",
+      "thesis": "Organiza las experiencias en estantes horizontales con etiquetas de proceso.",
+      "palette": [
+        "#111111",
+        "#1C1C1C",
+        "#EAEAEA",
+        "#E4000B"
+      ],
+      "materials": [
+        "estantes horizontales",
+        "etiquetas de catálogo"
+      ],
+      "viewport": "Estantería clasificada por categorías con indicadores de estado.",
+      "case": "Pierde en ambos ejes: una metáfora de conservas artesanales es ajena a una feria tecnológica estudiantil.",
+      "risk": "Reduce el alcance multidisciplinario de Feria TEC a un lenguaje doméstico.",
+      "kept": "Permitir que la fotografía real aporte el único color natural dentro de contenedores estrictamente monocromáticos.",
+      "hero": "https://impeccable.style/worlds/cards/food-fermentation-culinary-theater-pickling-brine-calendar-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/food-fermentation-culinary-theater-pickling-brine-calendar.webp"
+    },
+    {
+      "id": "challenger-orizuru",
+      "kind": "challenger",
+      "catalogId": "paper-folds-pleats-deployable-orizuru-crane-sequence",
+      "label": "Orizuru Crease Sequence",
+      "verdict": "declined",
+      "lineage": "Secuencia geométrica de 32 pliegues sobre papel cuadrado",
+      "thesis": "Despliega la información paso a paso mediante diagramas cuadrados numerados.",
+      "palette": [
+        "#0A0A0A",
+        "#1C1C1C",
+        "#FFFFFF",
+        "#E4000B"
+      ],
+      "materials": [
+        "retícula cuadrada",
+        "numeración marginal estricta"
+      ],
+      "viewport": "Módulo cuadrado central flanqueado por numeración de secuencia en el margen.",
+      "case": "Pierde en ambos ejes: el brief exige presentar las 7 zonas como experiencias independientes y no como un itinerario secuencial numerado.",
+      "risk": "Comunica erróneamente un recorrido obligatorio paso a paso.",
+      "kept": "Numeración monumental en los márgenes para identificar zonas (01–07) y carreras (01–11) con precisión geométrica.",
+      "hero": "https://impeccable.style/worlds/cards/paper-folds-pleats-deployable-orizuru-crane-sequence-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/paper-folds-pleats-deployable-orizuru-crane-sequence.webp"
+    }
+  ],
+  "reroll": {
+    "registers": [
+      "safer",
+      "bolder"
+    ]
+  },
+  "buildPath": {
+    "value": "comp",
+    "toggle": true
+  },
+  "canon": true,
+  "canonCard": {
+    "kind": "canon",
+    "label": "Landing Educativa Oscura Estándar",
+    "thesis": "La estructura convencional de evento educativo ejecutada limpiamente sobre la paleta oscura #0A0A0A y rojo #E4000B.",
+    "palette": [
+      "#0A0A0A",
+      "#1C1C1C",
+      "#FFFFFF",
+      "#E4000B"
+    ],
+    "materials": [
+      "retícula simétrica de 3 columnas",
+      "tarjetas uniformes de bordes rectos"
+    ],
+    "viewport": "Hero dividido 50/50 con titular a la izquierda y formulario a la derecha, seguido por una cuadrícula simétrica de tarjetas iguales.",
+    "risk": "Cumple con el color oscuro pero pierde la asimetría Bauhaus, la tensión editorial y la atmósfera gaming del brief.",
+    "html": ".impeccable/mocks/decision/canon.html",
+    "comp": ".impeccable/mocks/decision/canon.png"
+  },
+  "steer": true
+}
